@@ -11,8 +11,11 @@ function Template({
   onSidebarContentExpand,
   expandedKey,
 }) {
-  const { markdownRemark } = data // data.markdownRemark holds our post data
-  const { frontmatter, html, id } = markdownRemark
+  const { markdownRemark, site } = data // data.markdownRemark holds our post data
+  const { frontmatter, html, id, fields } = markdownRemark
+
+  const editUrl = site.siteMetadata.githubBase + fields.slug + ".md"
+
   if (expandedKey !== id) {
     onSidebarContentExpand(id)
   }
@@ -20,6 +23,7 @@ function Template({
   return (
     <Layout sidebarRoot={frontmatter.root}>
     <div className="blog-post-container">
+      <a class="editme" href={editUrl}>Edit me.... </a>
       <div className="blog-post">
         {/* <h1>{frontmatter.title}</h1>
         <h5>{frontmatter.date}</h5> */}
@@ -57,6 +61,11 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         title
         root
+      }
+    }
+    site {
+      siteMetadata {
+        githubBase
       }
     }
   }

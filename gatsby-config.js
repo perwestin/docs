@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: 'Gatsby Markdown Starter',
+    githubBase: 'https://github.com/froderik/op-devportal/tree/master/contents'
   },
   plugins: [
     'gatsby-plugin-react-helmet',
