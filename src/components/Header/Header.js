@@ -4,6 +4,7 @@ import sizeMe  from 'react-sizeme';
 import { connect } from "react-redux";
 import { updateHeaderHeight } from '../../actions/layout';
 import Menu from '../Menu';
+import Logo from './Logo.js';
 
 class Header extends Component {
   componentDidUpdate = () => {
@@ -12,6 +13,7 @@ class Header extends Component {
 
   render() {
     const { siteTitle } = this.props
+
     return(
       <div
         style={{
@@ -25,7 +27,7 @@ class Header extends Component {
         }}
       >
 
-        <img src="http://openpayments.io/wp-content/uploads/2017/11/Open-Payments_Logotype_Gold.png" style={{float: 'left'}}/>
+        <Logo/>
         <div
           style={{
             margin: '0 auto',
@@ -34,10 +36,9 @@ class Header extends Component {
           }}
         >
           <div style={{
-          //  float: 'left',
             marginBottom: '0.8em',
           }}>
-            <h1 style={{ margin: 0, fontSize: "3.25rem", marginLeft: '4.25em'}}>
+            <h1 style={{ margin: 0, fontSize: "3.25rem", fontFamily: "BookAntiquaBold", marginLeft: '4.25em'}}>
               <Link
                 to="/"
                 style={{
@@ -49,7 +50,7 @@ class Header extends Component {
               </Link>
             </h1>
           </div>
-          <Menu />
+          { /* <Menu /> */ }
         </div>
       </div>
     )
