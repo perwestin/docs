@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Markdown Starter',
+    title: 'Developer Portal',
     githubBase: 'https://github.com/froderik/op-devportal/tree/master/contents'
   },
   plugins: [

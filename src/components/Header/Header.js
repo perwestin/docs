@@ -19,10 +19,13 @@ class Header extends Component {
           top: 0,
           width: "100%",
           zIndex: 1000,
-          background: 'cornflowerblue',
+          background: '#1d2937',
+          color: '#f8b83f',
           marginBottom: '1.45rem',
         }}
       >
+
+        <img src="http://openpayments.io/wp-content/uploads/2017/11/Open-Payments_Logotype_Gold.png" style={{float: 'left'}}/>
         <div
           style={{
             margin: '0 auto',
@@ -31,15 +34,15 @@ class Header extends Component {
           }}
         >
           <div style={{
-            float: 'left',
+          //  float: 'left',
             marginBottom: '0.8em',
           }}>
-            <h1 style={{ margin: 0, fontSize: "1.25rem"}}>
+            <h1 style={{ margin: 0, fontSize: "3.25rem", marginLeft: '4.25em'}}>
               <Link
                 to="/"
                 style={{
-                  color: 'white',
-                  textDecoration: 'none',
+                  color: '#f8b83f',
+                  textDecoration: 'none'
                 }}
               >
                 {siteTitle}
