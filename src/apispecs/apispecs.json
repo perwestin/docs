@@ -1,0 +1,22 @@
+[
+    {
+      "name": "Aspsp",
+      "link": "https://api.swaggerhub.com/apis/openpayments/ASPSPInformationService/v1",
+      "type": "api"
+    },
+    {
+      "name": "Accounts",
+      "link": "https://api.swaggerhub.com/apis/openpayments/AccountInformationService/v1",
+      "type": "api"
+    },
+    {
+      "name": "Consent",
+      "link": "https://api.swaggerhub.com/apis/openpayments/ConsentService/v1",
+      "type": "api"
+    },
+    {
+      "name": "Payment Initiation",
+      "link": "https://api.swaggerhub.com/apis/openpayments/PaymentInitiationService/v1",
+      "typee": "api"
+    }
+]

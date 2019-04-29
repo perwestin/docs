@@ -1,23 +1,31 @@
 import React from 'react'
 import { Link, graphql, StaticQuery } from 'gatsby'
 
+var configurationOfType = function(allJson, typeName) {
+  return allJson.edges
+    .map(edge => edge.node)
+    .filter(node => node.type === typeName)
+}
+
 const Menu = () => {
   return (
     <StaticQuery
       query={graphql`
         query {
-          allMenuItems {
+          allJson {
             edges {
               node {
                 name
                 link
+                type
               }
             }
           }
         }
       `}
       render={data => {
-        const menuItems = data.allMenuItems.edges.map(edge => edge.node).reverse()
+        const menuItems = configurationOfType(data.allJson, 'menu')
+
         return (
           <div>
             {menuItems.map(item => {

@@ -5,6 +5,15 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
+    // this makes all json files that has been mounted with the gatsby-source-filesystem
+    // available in GraphQL with the allJson query
+    {
+      resolve: `gatsby-transformer-json`,
+      options: {
+        typeName: `Json`, // a fixed string
+      },
+    },
+    // mounts static files like images and jsons in the GraphQL world
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -13,16 +22,17 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-transformer-json`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        typeName: `MenuItems`, // a fixed string
+        name: `menuItems`,
+        path: `${__dirname}/src/menuItems`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `menuItems`,
-        path: `${__dirname}/src/menuItems`,
+        name: `apispecs`,
+        path: `${__dirname}/src/apispecs`,
       },
     },
     {

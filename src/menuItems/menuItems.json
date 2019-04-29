@@ -1,10 +1,12 @@
 [
   { 
     "name": "Docs",
-    "link":  "/docs/get-started/introduction"
+    "link":  "/docs/get-started/introduction",
+    "type": "menu"
   },
   {
     "name": "Blog",
-    "link": "/blog"
+    "link": "/blog",
+    "type": "menu"
   }
 ]

@@ -50,7 +50,7 @@ class Header extends Component {
               </Link>
             </h1>
           </div>
-          { /* <Menu /> */ }
+          { /*<Menu/>*/ }
         </div>
       </div>
     )
