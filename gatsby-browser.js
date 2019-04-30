@@ -6,4 +6,9 @@
 
 // You can delete this file if you're not using it
 import wrapWithProvider from "./wrap-with-provider"
+import SwaggerUI from 'swagger-ui'
+import React from 'react'
+
 export const wrapRootElement = wrapWithProvider
+
+window.SwaggerUI = SwaggerUI;

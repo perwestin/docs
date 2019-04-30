@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, graphql, StaticQuery } from 'gatsby'
 
-var configurationOfType = function(allJson, typeName) {
+const configurationOfType = function(allJson, typeName) {
   return allJson.edges
     .map(edge => edge.node)
     .filter(node => node.type === typeName)
