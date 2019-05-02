@@ -55,7 +55,7 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
 
     configurationOfType(result.data.allJson, "api").forEach((node) => {
       createPage({
-        path: node.name,
+        path: 'api/' + node.name.toLowerCase(),
         component: swaggerTemplate,
         context: {"spec": node.link}
       })
