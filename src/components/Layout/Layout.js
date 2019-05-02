@@ -76,8 +76,7 @@ const Layout = ({
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
         {(matches && onPostPage) ? <ResponsiveTopBar root={sidebarRoot}/> : null}
-        {(!matches && onPostPage) ? 
-        <><ResponsiveSidebar root={sidebarRoot}/> <ResponsiveAnchor /> </>: null }
+        {(!matches && onPostPage) ? <><ResponsiveSidebar root={sidebarRoot}/> <ResponsiveAnchor /> </> : null }
         <Container sidebarDocked={!matches} onPostPage={onPostPage}>
           {children}
         </Container>

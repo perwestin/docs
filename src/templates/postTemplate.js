@@ -22,17 +22,17 @@ function Template({
 
   return (
     <Layout sidebarRoot={frontmatter.root}>
-    <div className="blog-post-container">
-      <a class="editme" href={editUrl}>Edit me.... </a>
-      <div className="blog-post">
-        {/* <h1>{frontmatter.title}</h1>
-        <h5>{frontmatter.date}</h5> */}
-        <div
-          className="blog-post-content"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
+      <div className="blog-post-container">
+        <a class="editme" href={editUrl}>Edit me.... </a>
+        <div className="blog-post">
+          {/* <h1>{frontmatter.title}</h1>
+          <h5>{frontmatter.date}</h5> */}
+          <div
+            className="blog-post-content"
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
+        </div>
       </div>
-    </div>
     </Layout>
   )
 }

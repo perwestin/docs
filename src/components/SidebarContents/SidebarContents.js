@@ -10,8 +10,8 @@ import { pathPrefix } from '../../../gatsby-config'
 
 const SubMenu = Menu.SubMenu
 
-const convertToTree = (data) => {
-  const list = data.map(edge => {
+const convertToTree = (markdownData, apiData) => {
+  const list = markdownData.map(edge => {
       return ({
         path: edge.node.fields.slug,
         key: edge.node.id,
@@ -19,6 +19,15 @@ const convertToTree = (data) => {
         parents: edge.node.frontmatter.parents
       })
     })
+  const apiMenuItems = apiData.map(oneApi => {
+      return ({
+        path: "api/" + oneApi.node.name.toLowerCase(),
+        key: "none",
+        title: oneApi.node.name,
+        parents: ["API"]
+      })
+    })
+  list.push(...apiMenuItems)
   return constructTree(list)
 }
 
@@ -85,12 +94,22 @@ class SidebarContents extends Component {
                 }
               }
             }
+
+            allJson {
+              edges {
+                node {
+                  name
+                  link
+                  type
+                }
+              }
+            }      
           }
         `}
         render={data => {
-          const [tree, dir] = convertToTree(data.allMarkdownRemark.edges.filter(node => 
-            node.node.fields.slug.startsWith(root)
-          ))
+          const markdownDocNodes = data.allMarkdownRemark.edges.filter(node => node.node.fields.slug.startsWith(root))
+          const apiNodes = data.allJson.edges
+          const [tree, dir] = convertToTree(markdownDocNodes, apiNodes)
           sortTree(tree)
           const loop = data => data.map((item) => {
             if (item.children) {
