@@ -1,2 +1,10 @@
 // Replacing '/' would result in empty string which is invalid
-module.exports = replacePath = path => (path === `/` ? path : path.replace(/\/$/, ``))
+const replacePath = path => (path === `/` ? path : path.replace(/\/$/, ``))
+
+const configurationOfType = (allJson, typeName) => {
+    return allJson.edges
+        .map(edge => edge.node)
+        .filter(node => node.type === typeName)
+}
+  
+module.exports = { replacePath, configurationOfType }

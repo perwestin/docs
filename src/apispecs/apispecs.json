@@ -17,6 +17,6 @@
     {
       "name": "Payment Initiation",
       "link": "https://api.swaggerhub.com/apis/openpayments/PaymentInitiationService/v1",
-      "typee": "api"
+      "type": "api"
     }
 ]

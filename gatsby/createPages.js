@@ -1,13 +1,6 @@
 
-const replacePath = require('./utils')
+const { replacePath, configurationOfType } = require('./utils')
 const path = require("path")
-
-const configurationOfType = function(allJson, typeName) {
-  return allJson.edges
-    .map(edge => edge.node)
-    .filter(node => node.type === typeName)
-}
-
 
 module.exports = exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions

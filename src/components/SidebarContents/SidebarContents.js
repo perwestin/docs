@@ -7,6 +7,7 @@ import Menu from 'antd/lib/menu'
 import 'antd/lib/menu/style/css'
 import './SidebarContents.css'
 import { pathPrefix } from '../../../gatsby-config'
+import { configurationOfType } from '../../../gatsby/utils'
 
 const SubMenu = Menu.SubMenu
 
@@ -21,9 +22,9 @@ const convertToTree = (markdownData, apiData) => {
     })
   const apiMenuItems = apiData.map(oneApi => {
       return ({
-        path: "api/" + oneApi.node.name.toLowerCase(),
+        path: "api/" + oneApi.name.toLowerCase(),
         key: "none",
-        title: oneApi.node.name,
+        title: oneApi.name,
         parents: ["API"]
       })
     })
@@ -108,7 +109,7 @@ class SidebarContents extends Component {
         `}
         render={data => {
           const markdownDocNodes = data.allMarkdownRemark.edges.filter(node => node.node.fields.slug.startsWith(root))
-          const apiNodes = data.allJson.edges
+          const apiNodes = configurationOfType(data.allJson, 'api')
           const [tree, dir] = convertToTree(markdownDocNodes, apiNodes)
           sortTree(tree)
           const loop = data => data.map((item) => {

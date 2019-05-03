@@ -1,5 +1,4 @@
-// import { replacePath } from './utils'
-const replacePath = require('./utils')
+const { replacePath } = require('./utils')
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 module.exports = exports.onCreateNode = ({ node, getNode, actions }) => {
