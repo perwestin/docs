@@ -3,13 +3,11 @@ title: Introduction
 root: "/docs"
 parents: ["Get Started"]
 ---
-<h1 align="center">
-  Introduction
-</h1>
+# Introduction
 
-Gatsby Markdown Starter is a bolierplate for markdown-based website (i.e. Documentation, Blog, etc.).
+Open Payments provide PSD2 compliant APIs - etc.....
 
 ## Features
-* Responsive Web Design
-* Automatically generate Sidebar
-* Automatically generate Anchor
+* Unified API over all the banks
+* Easy to use SDKs for all popular langs
+* Interact with a payments provider like a breeze

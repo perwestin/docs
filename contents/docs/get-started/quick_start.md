@@ -3,30 +3,16 @@ title: Quick Start
 root: "/docs"
 parents: ["Get Started"]
 ---
-<h1 align="center">
-  Quick Start
-</h1>
+# Quick Start
 
-The website is based on Gatsby, full documentation for Gatsby lives [on the website](https://gatsbyjs.org/).
+You can try it out right now in our sandbox environment. Read on to learn how
 
-## Create a Gatsby site.
+## Get a developer account
 
-  Use the Gatsby CLI to create a new site, specifying the default starter.
+[Sign up](/signup) for a developer account
+  
+## Three ways to try it out
 
-  ```sh
-  gatsby new gatsby-starter-markdown https://github.com/cvluca/gatsby-starter-markdown
-  ```
-## Start developing.
-
-  Navigate into your new site’s directory and start it up.
-
-  ```sh
-  cd gatsby-starter-markdown/
-  gatsby develop
-  ```
-
-## Open the source code and start editing!
-
-  Your site is now running at `http://localhost:8000`!
-   
-  *Note: You'll also see a second link: `http://localhost:8000/___graphql`. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql).*
+- when you are signed in to the developer portal you can try all the APIs from within the [documentation](/api/aspsp).
+- you can try it out over rest using our fantastic [postman collection](/link/to/postman) or using  your favorite tool
+- use one of [our SDKs](/docs/sdks) for your favorite language

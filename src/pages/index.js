@@ -11,14 +11,14 @@ const IndexPage = () => {
         <div align="center">
         <br/>
           <p style={{color: "cornflowerblue", fontSize: 50, fontWeight: 'bold'}}>
-            Gatsby Markdown Starter
+            All the docs for Open Payments API
           </p>
-          <h2>Boilerplate for markdown-based website</h2>
+          <h2>All you need to start developing with us at Open Payments</h2>
           <br/>
           <Link to="/docs/get-started/introduction">
             <Button type="primary" size="large" style={{marginRight: 10}}>Get Started</Button>
           </Link>
-          <Button type="primary" size="large" href="https://github.com/cvluca/gatsby-starter-markdown">Github</Button>
+          <Button type="primary" size="large" href="https://github.com/openpayments/devportal">Github</Button>
         </div>
       </div>
     </Layout>
