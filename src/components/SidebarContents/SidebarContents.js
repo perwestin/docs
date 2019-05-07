@@ -121,6 +121,13 @@ class SidebarContents extends Component {
                 </SubMenu>
               )
             }
+            if (window.location.pathname.includes(item.path)) {
+              return (
+                <Menu.Item key={item.key}>
+                  {item.title}
+                </Menu.Item>
+              )
+            }
             return (
               <Menu.Item key={item.key}>
                 <Link to={item.path} onClick={this.onSetSidebarOpen}>{item.title}</Link>
