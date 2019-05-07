@@ -22,8 +22,8 @@ const convertToTree = (markdownData, apiData) => {
     })
   const apiMenuItems = apiData.map(oneApi => {
       return ({
-        path: "api/" + oneApi.name.toLowerCase(),
-        key: "none",
+        path: "/api/" + oneApi.name.toLowerCase(),
+        key: oneApi.name,
         title: oneApi.name,
         parents: ["API"]
       })

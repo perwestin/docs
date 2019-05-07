@@ -23,7 +23,7 @@ function Template({
   return (
     <Layout sidebarRoot={frontmatter.root}>
       <div className="blog-post-container">
-        <a class="editme" href={editUrl}>Edit me.... </a>
+        <a className="editme" href={editUrl}>Edit me.... </a>
         <div className="blog-post">
           {/* <h1>{frontmatter.title}</h1>
           <h5>{frontmatter.date}</h5> */}

@@ -3,7 +3,6 @@ import { Link } from 'gatsby';
 import sizeMe  from 'react-sizeme';
 import { connect } from "react-redux";
 import { updateHeaderHeight } from '../../actions/layout';
-import Menu from '../Menu';
 import Logo from './Logo.js';
 
 class Header extends Component {

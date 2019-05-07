@@ -1,8 +1,6 @@
 import React from 'react'
 import Layout from '../components/Layout'
-import Button from 'antd/lib/button'
 import 'antd/lib/button/style/css'
-import { Link } from "gatsby"
 import { connect } from 'react-redux'
 import "swagger-ui/dist/swagger-ui.css"
 
