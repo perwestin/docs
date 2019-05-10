@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-markdown",
-  "description": "Gatsby markdown starter",
-  "version": "1.0.0",
-  "author": "Luca(Wei) Chen <wei@cvluca.com>",
+  "name": "open-payments-docs",
+  "description": "Open payments docs",
+  "version": "0.0.1",
+  "author": "Fredrik Rubensson <fredrik.rubensson@openpayments.io",
   "dependencies": {
     "antd": "^3.16.6",
     "gatsby": "^2.4.2",
@@ -49,6 +49,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cvluca/gatsby-starter-markdown"
+    "url": "https://github.com/openpaymentseurope/docs"
   }
 }
