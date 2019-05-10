@@ -2,6 +2,8 @@
 FROM node:latest AS build-container
 COPY . /src
 
+RUN npm install -g gatsby-cli
+
 # node_modules will not be there in a production build but 
 # removing it makes the build repeatable locally also
 # 
