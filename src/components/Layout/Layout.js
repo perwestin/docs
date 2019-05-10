@@ -60,27 +60,28 @@ const Layout = ({
       }
       
       return (
-      <MediaQuery
-        maxWidth={1000}
-      >
+        <MediaQuery
+          maxWidth={1000}
+        >
         {(matches) => (
           <>
-        <Helmet
-          title={data.site.siteMetadata.title}
-          meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
-          ]}
-        >
-          <html lang="en" />
-        </Helmet>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        {(matches && onPostPage) ? <ResponsiveTopBar root={sidebarRoot}/> : null}
-        {(!matches && onPostPage) ? <><ResponsiveSidebar root={sidebarRoot}/> <ResponsiveAnchor /> </> : null }
-        <Container sidebarDocked={!matches} onPostPage={onPostPage}>
-          {children}
-        </Container>
-        </>)}
+            <Helmet
+              title={data.site.siteMetadata.title}
+              meta={[
+                { name: 'description', content: 'Sample' },
+                { name: 'keywords', content: 'sample, something' },
+              ]}
+            >
+              <html lang="en" />
+            </Helmet>
+            <Header siteTitle={data.site.siteMetadata.title} />
+            {(matches && onPostPage) ? <ResponsiveTopBar root={sidebarRoot}/> : null}
+            {(!matches && onPostPage) ? <><ResponsiveSidebar root={sidebarRoot}/> <ResponsiveAnchor /> </> : null }
+            <Container sidebarDocked={!matches} onPostPage={onPostPage}>
+              {children}
+            </Container>
+          </>
+        )}
         </MediaQuery>
       )
     }}
