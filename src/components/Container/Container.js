@@ -14,7 +14,7 @@ class Container extends Component {
       <div
         style={{
           position: "absolute",
-          top: (!sidebarDocked && onPostPage) ? headerHeight + 70: headerHeight + 30,
+          top: (!sidebarDocked && onPostPage) ? headerHeight + 70: headerHeight + 0,
           left: ((!sidebarDocked && onPostPage) || !onPostPage) ? 0 : "20%",
           right: ((!sidebarDocked && onPostPage) || !onPostPage) ? 0 : "15%",
           bottom: 0,
@@ -24,7 +24,6 @@ class Container extends Component {
         <div
           style={{
             margin: '0 auto',
-            padding: '0px 1.0875rem 1.45rem',
             paddingTop: 0,
           }}
         >

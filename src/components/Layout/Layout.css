@@ -624,5 +624,11 @@ pre tt:after {
 }
 
 .editme {
-  float:right;
+  float: right;
+}
+
+.largerwhitetext {
+  color: white;
+  font-size: 18px;
+  max-width: 580px;;
 }

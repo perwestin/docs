@@ -27,30 +27,6 @@ class Header extends Component {
       >
 
         <Logo/>
-        <div
-          style={{
-            margin: '0 auto',
-            maxWidth: 1360,
-            padding: '0.8rem 1.0875rem',
-          }}
-        >
-          <div style={{
-            marginBottom: '0.8em',
-          }}>
-            <h1 style={{ margin: 0, fontSize: "3.25rem", fontFamily: "BookAntiquaBold", marginLeft: '4.25em'}}>
-              <Link
-                to="/"
-                style={{
-                  color: '#f8b83f',
-                  textDecoration: 'none'
-                }}
-              >
-                {siteTitle}
-              </Link>
-            </h1>
-          </div>
-          { /*<Menu/>*/ }
-        </div>
       </div>
     )
   }
