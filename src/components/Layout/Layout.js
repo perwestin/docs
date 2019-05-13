@@ -8,6 +8,7 @@ import ResponsiveSidebar from '../ResponsiveSidebar';
 import Container from '../Container';
 import ResponsiveAnchor from '../ResponsiveAnchor';
 import ResponsiveTopBar from '../ResponsiveTopBar';
+import Footer from '../Footer';
 // import { setPostPageOn, setPostPageOff } from '../../actions/layout'
 import { connect } from 'react-redux'
 import { pathPrefix } from '../../../gatsby-config'
@@ -80,6 +81,7 @@ const Layout = ({
             <Container sidebarDocked={!matches} onPostPage={onPostPage}>
               {children}
             </Container>
+            <Footer/>
           </>
         )}
         </MediaQuery>

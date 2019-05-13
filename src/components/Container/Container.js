@@ -7,14 +7,15 @@ class Container extends Component {
     const {
       sidebarDocked, 
       headerHeight, 
-      onPostPage, 
+      onPostPage,
+      backgroundColor = 'white'
     } = this.props;
 
     return (
       <div
         style={{
-          position: "absolute",
-          top: (!sidebarDocked && onPostPage) ? headerHeight + 70: headerHeight + 0,
+          position: "relative",
+          top: headerHeight + 0,
           left: ((!sidebarDocked && onPostPage) || !onPostPage) ? 0 : "20%",
           right: ((!sidebarDocked && onPostPage) || !onPostPage) ? 0 : "15%",
           bottom: 0,
@@ -25,6 +26,7 @@ class Container extends Component {
           style={{
             margin: '0 auto',
             paddingTop: 0,
+            backgroundColor: backgroundColor,
           }}
         >
           {this.props.children}
