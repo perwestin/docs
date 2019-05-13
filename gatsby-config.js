@@ -53,7 +53,7 @@ module.exports = {
         background_color: '#663399',
         theme_color: '#663399',
         display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
+        icon: 'src/images/logo-small.png', // This path is relative to the root of the site.
       },
     },
     {
@@ -80,16 +80,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-remove-trailing-slashes`,
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.app/offline
-    // 'gatsby-plugin-offline',
-    {
-      resolve: `gatsby-plugin-favicon`,
-      options: {
-        logo: './src/images/logo-small.png'
-      }
-    }
-    // this plugin puts a favicon in place
   ],
   pathPrefix: '/',
 }
