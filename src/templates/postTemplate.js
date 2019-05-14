@@ -4,6 +4,7 @@ import Layout from "../components/Layout";
 import { connect } from 'react-redux'
 import { onSidebarContentExpand } from '../actions/layout'
 import "katex/dist/katex.min.css"
+import "./postTemplate.css"
 import { getSidebarExpandedKey } from "../store/selectors";
 
 function Template({

@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: 'Developer Portal',
-    githubBase: 'https://github.com/froderik/op-devportal/tree/master/contents'
+    githubBase: 'https://github.com/openpaymentseurope/docs/tree/master/contents'
   },
   plugins: [
     'gatsby-plugin-react-helmet',

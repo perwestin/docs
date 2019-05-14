@@ -16,10 +16,11 @@ class Container extends Component {
         style={{
           position: "relative",
           top: headerHeight + 0,
-          left: ((!sidebarDocked && onPostPage) || !onPostPage) ? 0 : "20%",
-          right: ((!sidebarDocked && onPostPage) || !onPostPage) ? 0 : "15%",
+          left: onPostPage ? "20%" : 0,
+          right: onPostPage ? "15%" : 0,
           bottom: 0,
           overflow: !sidebarDocked ? "auto" : "visible",
+          width: "50%",
         }}
       >
         <div
