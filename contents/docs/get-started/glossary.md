@@ -2,6 +2,7 @@
 title: Glossary
 root: "/docs"
 parents: ["Get Started"]
+prio: 1
 ---
 
 <h1>Glossary</h1>

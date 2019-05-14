@@ -2,6 +2,7 @@
 title: Quick Start
 root: "/docs"
 parents: ["Get Started"]
+prio: 1
 ---
 # Quick Start
 

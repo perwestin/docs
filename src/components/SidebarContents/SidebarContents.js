@@ -12,11 +12,12 @@ import { configurationOfType } from '../../../gatsby/utils'
 const SubMenu = Menu.SubMenu
 
 const convertToTree = (markdownData, apiData) => {
-  const list = markdownData.map(edge => {
+  const markdownItems = markdownData.map(edge => {
       return ({
         path: edge.node.fields.slug,
         key: edge.node.id,
         title: edge.node.frontmatter.title,
+        prio: edge.node.frontmatter.prio,
         parents: edge.node.frontmatter.parents
       })
     })
@@ -25,11 +26,12 @@ const convertToTree = (markdownData, apiData) => {
         path: "/api/" + oneApi.name.toLowerCase(),
         key: oneApi.name,
         title: oneApi.name,
+        prio: 1,
         parents: ["API"]
       })
     })
-  list.push(...apiMenuItems)
-  return constructTree(list)
+  apiMenuItems.push(...markdownItems)
+  return constructTree(apiMenuItems)
 }
 
 const constructTree = (list) => {
@@ -43,10 +45,12 @@ const constructTree = (list) => {
         if (subtree
           .filter(node => node.title === item.parents[i] && node.children)
           .length === 0) {
+            const title = item.parents[i]
           const newNode = {
-            key: "tree/" + item.parents[i],
-            title: item.parents[i],
-            children: []
+            key: "tree/" + title,
+            title: title,
+            children: [],
+            prio: title === "API" ? 1 : 0
           }
           subtree.push(newNode)
           dir.push(newNode)
@@ -61,10 +65,15 @@ const constructTree = (list) => {
 
 const sortTree = tree => {
   tree.sort((a,b)=> {
-    if (((a.children && b.children) || 
-    (!a.children && !b.children)) &&
-    a.title > b.title) return 1
-    else if (a.children) return 1
+    if (((a.children && b.children) || (!a.children && !b.children))) {
+      if (a.prio === b.prio ) {
+        console.log("prio is the same " + a.title + " " + b.title + " " + a.prio + " " + b.prio)
+        return a.title > b.title
+      }
+      else return a.prio > b.prio
+    } else if (a.children) {
+      return -1
+    }
     return -1
   })
 }
@@ -90,6 +99,7 @@ class SidebarContents extends Component {
                   id
                   frontmatter {
                     title
+                    prio
                     parents
                   }
                 }

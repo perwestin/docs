@@ -2,6 +2,7 @@
 title: Introduction
 root: "/docs"
 parents: ["Get Started"]
+prio: 0
 ---
 # Introduction
 
