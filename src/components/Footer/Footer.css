@@ -1,21 +1,42 @@
 .footer {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     margin: 0 auto;
     padding: 33px;
-    max-width: 800px;
+    max-width: 1000px;
+    min-width: 100%;
+    bottom: 0;
+    position: fixed;
     background-color: rgb(29, 41, 55);
 }
 
+h2 {
+    color: white;
+}
+
 .aboutus {
-    width: 70%;
+    width: 40%;
+    color: white;
 }
 
 .contact {
-    width: 30%;
+    width: 40%;
 }
 
-.footer h2 {
+.footer {
     color: white;
+}
+
+.footer-box {
+    padding: 0 20px;
+}
+
+.one-contact-row {
+    margin-bottom: 20px;
+}
+
+.contact-header {
+    font-weight: bold;
+    margin-bottom: 4px;
 }
