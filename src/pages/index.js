@@ -5,7 +5,6 @@ import 'antd/lib/button/style/css'
 import { Link } from "gatsby"
 
 const IndexPage = ({data}) => {
-  console.log("-------------------------" + JSON.stringify(data.file))
   return (
     <Layout>
       <section id="intro-section" style={{

@@ -67,7 +67,6 @@ const sortTree = tree => {
   tree.sort((a,b)=> {
     if (((a.children && b.children) || (!a.children && !b.children))) {
       if (a.prio === b.prio ) {
-        console.log("prio is the same " + a.title + " " + b.title + " " + a.prio + " " + b.prio)
         return a.title > b.title
       }
       else return a.prio > b.prio
