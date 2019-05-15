@@ -8,7 +8,8 @@ class Container extends Component {
       sidebarDocked, 
       headerHeight, 
       onPostPage,
-      backgroundColor = 'white'
+      backgroundColor = 'white',
+      width = "100%"
     } = this.props;
 
     return (
@@ -20,7 +21,7 @@ class Container extends Component {
           right: onPostPage ? "15%" : 0,
           bottom: 0,
           overflow: !sidebarDocked ? "auto" : "visible",
-          width: "50%",
+          width: width,
         }}
       >
         <div

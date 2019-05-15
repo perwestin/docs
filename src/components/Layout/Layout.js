@@ -21,6 +21,7 @@ const Layout = ({
   // setPostPageOff,
   sidebarRoot,
   onSetSidebarDocked,
+  width = "100%"
 }) => (
   <StaticQuery
     query={graphql`
@@ -78,7 +79,7 @@ const Layout = ({
             <Header siteTitle={data.site.siteMetadata.title} />
             {(matches && onPostPage) ? <ResponsiveTopBar root={sidebarRoot}/> : null}
             {(!matches && onPostPage) ? <><ResponsiveSidebar root={sidebarRoot}/> <ResponsiveAnchor /> </> : null }
-            <Container sidebarDocked={!matches} onPostPage={onPostPage}>
+            <Container sidebarDocked={!matches} onPostPage={onPostPage} width={width}>
               {children}
             </Container>
             <Footer/>
