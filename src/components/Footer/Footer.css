@@ -2,7 +2,7 @@
     padding:2em 2em 0 2em;
  background-color: rgb(29, 41, 55);
     bottom: 0;
-    position: absolute;
+    position: fixed;
     left:0;
     right:0;
 }
