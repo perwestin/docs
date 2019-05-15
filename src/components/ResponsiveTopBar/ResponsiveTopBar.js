@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Button from 'antd/lib/button'
-import 'antd/lib/button/style/css'
 import { getHeaderHeightState, getSidebarState, getAnchorState } from '../../store/selectors';
 import { onSetAnchorOpen, onSetSidebarOpen } from '../../actions/layout'
 import SidebarContents from '../SidebarContents';

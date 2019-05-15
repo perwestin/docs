@@ -1,6 +1,5 @@
 import React from 'react'
 import Layout from '../components/Layout'
-import 'antd/lib/button/style/css'
 import { connect } from 'react-redux'
 import "swagger-ui/dist/swagger-ui.css"
 
