@@ -15,15 +15,15 @@ Open Payments provides 3 building stones on which you can build you bank aware a
 
 The first is called ASPSP after Account Servicing Payment Service Providers. Most of these would be called banks in normal speak.... This set of
 APIs makes it possible to discover what banks that are available for a certain country and what capabilities those banks
-have in the Open Payments ecosystem. Here is a [tutorial to get started](/docs/get-started/aspsp) with ASPSP.
+have in the Open Payments ecosystem. Here is a [tutorial to get started](/docs/tutorials/aspsp) with ASPSP.
 
 Then we have Account Information where it is possible to list all accounts for a PSU (Payment Service User) and also account details 
 like list of transactions, different identification schemes and so on. The account APIs work together with the consent API to form 
-a building block in your applicataion. Read more in the [account and consent tutorial](/docs/get-started/accounts-and-consent).
+a building block in your applicataion. Read more in the [account and consent tutorial](/docs/tutorials/accounts-and-consent).
 
 Finally there is Payment Initiation where actual payments are initiated. This API uses its own idea about consent in concordance with the
 NextGen specification. So it is not possible to get a consent for payments from the consent APIs. Read more about how to initiate 
-a payment in the [payment initiation tutorial](/docs/get-started/payments).
+a payment in the [payment initiation tutorial](/docs/tutorials/payments).
 
 ## Standards
 
