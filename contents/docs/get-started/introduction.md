@@ -19,7 +19,7 @@ have in the Open Payments ecosystem. Here is a [tutorial to get started](/docs/t
 
 Then we have Account Information where it is possible to list all accounts for a PSU (Payment Service User) and also account details 
 like list of transactions, different identification schemes and so on. The account APIs work together with the consent API to form 
-a building block in your applicataion. Read more in the [account and consent tutorial](/docs/tutorials/accounts-and-consent).
+a building block in your applicataion. Read more in the [accounts and consent tutorial](/docs/tutorials/accounts-and-consent).
 
 Finally there is Payment Initiation where actual payments are initiated. This API uses its own idea about consent in concordance with the
 NextGen specification. So it is not possible to get a consent for payments from the consent APIs. Read more about how to initiate 
@@ -28,7 +28,7 @@ a payment in the [payment initiation tutorial](/docs/tutorials/payments).
 ## Standards
 
 The first generation of Open Payments API is based on the NextGen specification. A client already aware of NextGen should be able to 
-work with our platform with no or little hassle. For practical purposes we have broken the specification up in 5 different parts 
+work with our platform with no or little hassle. For practical purposes we have broken the specification up in 4 different parts 
 corresponding to the building stones described above. OAS3 specifications are available:
 
 - [ASPSP](/api/aspsp)

@@ -143,18 +143,6 @@ prio: 1
   and is designed in such a way as to protect the confidentiality of the authentication data.
 </p>
 
-<h4>Team</h4>
-<p>The gathering group which applications and members belongs to.</p>
-
-<h4>Team Member</h4>
-<p>An account on the developer portal that’s a member of a specific team.</p>
-
-<h4>Team Owner</h4>
-<p>The team member that’s allowed to administer a specific team.</p>
-
-<h4>Test User</h4>
-<p>A fictitious person for which bank accounts can be associated with.</p>
-
 <h4>TPP</h4>
 <p>
   Third Party Providers are organisations or natural persons that use APIs developed to Standards to access customer’s accounts,

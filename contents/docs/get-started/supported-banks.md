@@ -7,18 +7,24 @@ prio: 0
 
 # Supported banks
 
-Here is alist of currently supported banks.
+Here is a list of currently supported banks.
 
 ## Sweden
 
 - Nordea
+- Handelsbanken
 - SEB
-- Swedbank....
+- Swedbank (coming soon)
 
 ## Finland
 
-- Nordea
+- Nordea (coming soon)
+- OP (coming soon)
 
 ## Denmark
 
-- Danske Bank
+- Nordea (coming soon)
+
+## Germany
+
+- Deutsche Bank (coming soon)
