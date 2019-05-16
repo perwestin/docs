@@ -15,9 +15,10 @@ class Container extends Component {
     return (
       <div
         style={{
-          margin: '0 auto',
+          margin: '80px auto 0',
           overflow: !sidebarDocked ? "auto" : "visible",
           width: width,
+          height: 'auto'
         }}
       >
         <div

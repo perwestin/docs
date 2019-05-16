@@ -10,14 +10,28 @@ class Header extends Component {
     this.props.updateHeaderHeight(this.props.size.height)
   }
 
-  render() {
-    const { siteTitle } = this.props
+  setLink() {
+    if (window.location.pathname === '/') {
+      return (
+        <div className='header'>
+          <Logo />
+        </div>)
+    } else {
 
-    return (
-      <div className='header'>
-        <Logo />
-      </div>
-    )
+      return (
+        <div className='header'>
+          <Link to= '/'>
+            <Logo />
+          </Link>
+        </div>
+      )
+    }
+  }
+
+  render() {
+    // const { siteTitle } = this.props
+
+    return this.setLink()
   }
 }
 

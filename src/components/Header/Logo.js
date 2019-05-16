@@ -6,9 +6,9 @@ export default () => (
     <StaticQuery
         query= {graphql`
         query {
-          file(name: { eq: "logo" }) {
+          file(name: { eq: "logo-small" }) {
             childImageSharp {
-              fixed(width: 200, height: 115) {
+              fixed(width: 40, height: 40) {
                 ...GatsbyImageSharpFixed
               }
             }
@@ -16,7 +16,7 @@ export default () => (
         }
       `}
       render={data =>
-        <Img style={{margin: "24px"}} fixed={data.file.childImageSharp.fixed} alt="logo" />
+        <Img fixed={data.file.childImageSharp.fixed} alt="logo" />
       }
     />
 )
