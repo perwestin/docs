@@ -1,7 +1,6 @@
 import React from 'react'
 import Layout from '../components/Layout'
 import Button from 'antd/lib/button'
-import 'antd/lib/button/style/css'
 import { Link } from "gatsby"
 
 const IndexPage = ({data}) => {
@@ -30,9 +29,9 @@ const IndexPage = ({data}) => {
               </p>
               <br/>
               <Link to="/docs/get-started/introduction">
-                <Button type="primary" size="large" style={{marginRight: 10}}>Get Started</Button>
+                <Button className="btn btn-primary">Get Started</Button>
               </Link>
-              <Button type="primary" size="large" href="https://github.com/openpayments/devportal">Fork me over at Github</Button>
+              <Button className="btn btn-secondary" href="https://github.com/openpaymentseurope/docs">Fork me over at Github</Button>
           </div>
       </div>
       </section>

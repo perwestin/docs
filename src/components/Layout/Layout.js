@@ -73,12 +73,13 @@ const Layout = ({
                 { name: 'description', content: 'Sample' },
                 { name: 'keywords', content: 'sample, something' },
               ]}
+              link={[{rel:"stylesheet", href:"https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,700,900|Material+Icons"}]}
             >
               <html lang="en" />
             </Helmet>
             <Header siteTitle={data.site.siteMetadata.title} />
-            {(matches && onPostPage) ? <ResponsiveTopBar root={sidebarRoot}/> : null}
-            {(!matches && onPostPage) ? <><ResponsiveSidebar root={sidebarRoot}/> <ResponsiveAnchor /> </> : null }
+            {/* {(matches && window.location.pathname !== '/') ? <ResponsiveTopBar root={sidebarRoot}/> : null} */}
+            {(!matches && window.location.pathname !== '/') ? <><ResponsiveSidebar root={sidebarRoot}/> <ResponsiveAnchor /> </> : null }
             <Container sidebarDocked={!matches} onPostPage={onPostPage} width={width}>
               {children}
             </Container>
