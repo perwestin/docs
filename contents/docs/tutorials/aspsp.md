@@ -35,6 +35,7 @@ This post will return a JSON object that looks like this:
     curl -X GET
     https://api.sandbox.openpaymentsplatform.com/psd2/aspspinformation/v1/countries
     -H 'Authorization: Bearer [ACCESS_TOKEN]'
+    -H 'X-Request-ID: [GUID]'
 
 ### Query parameters
 
@@ -68,6 +69,7 @@ This post will return a JSON object that looks like this:
     curl -X GET
     https://api.sandbox.openpaymentsplatform.com/psd2/aspspinformation/v1/cities
     -H 'Authorization: Bearer [ACCESS_TOKEN]'
+    -H 'X-Request-ID: [GUID]'
 
 ### Query parameters
 
@@ -75,7 +77,7 @@ This post will return a JSON object that looks like this:
 `cityIds` : a comma separated list of city ids to retrieve. Optional.
 
 The service will return all matches for the queries.
-    
+
 ### Response
 
     {
@@ -108,6 +110,7 @@ The service will return all matches for the queries.
     curl -X GET
     https://api.sandbox.openpaymentsplatform.com/psd2/aspspinformation/v1/aspsps
     -H 'Authorization: Bearer [ACCESS_TOKEN]'
+    -H 'X-Request-ID: [GUID]'
 
 ### Query parameters
 
@@ -143,6 +146,7 @@ The service will return all matches for the queries.
     curl -X GET
     https://api.sandbox.openpaymentsplatform.com/psd2/aspspinformation/v1/aspsps/[BICFI]
     -H 'Authorization: Bearer [ACCESS_TOKEN]'
+    -H 'X-Request-ID: [GUID]'
 
 ### Path parameter
 
