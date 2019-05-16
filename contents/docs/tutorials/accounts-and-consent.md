@@ -1,16 +1,16 @@
 ---
-title: Getting started with consent and accounts
+title: Getting started with consents
 root: "/docs"
 parents: ["Get Started"]
 ---
-# Getting started with consent and accounts
+# Getting started with consents
 
 ## Acquire an access token for Account Information
 
     curl -X POST
-    https://auth.sandbox.openpaymentsplatform.com/connect/token
-    -H 'Content-Type: application/x-www-form-urlencoded'
-    -d 'client_id=[YOUR_CLIENT_ID]&client_secret=[YOUR_CLIENT_SECRET]&scope=accountinformation&grant_type=client_credentials'
+		[AUTH_HOST]/connect/token
+		-H 'Content-Type: application/x-www-form-urlencoded'
+		-d 'client_id=[YOUR_CLIENT_ID]&client_secret=[YOUR_CLIENT_SECRET]&scope=accountinformation&grant_type=client_credentials'
 
 This post will return a JSON object that looks like this:
 
@@ -23,42 +23,42 @@ This post will return a JSON object that looks like this:
 ## Create consent
 
     curl -X POST
-    https://api.sandbox.openbankingplatform.com/psd2/consent/v1/consents
-    -H 'Authorization: Bearer [ACCESS_TOKEN]'
-    -H 'Content-Type: application/json'
-    -H 'PSU-IP-Address: [PSU-IP-Address]'
-    -H 'X-BicFi: [BICFI]'
-    -H 'X-Request-ID: [GUID]'
-    -d '{
-        "access": {
-            "accounts": [
-                {
-                    "iban": "[consentIban]",
-                    "currency": "[consentCurrency]"
-                },
-                {
-                    "iban": "[otherConsentIban]",
-                    "currency": "[consentCurrency]"
-                }
-            ],
-            "balances": [
-                {
-                    "iban": "[consentIban]",
-                    "currency": "[consentCurrency]"
-                }
-            ],
-            "transactions": [
-                {
-                    "iban": "[consentIban]",
-                    "currency": "[consentCurrency]"
-                }
-            ]
-        },
-        "recurringIndicator": [consentRecurringIndicator],
-        "validUntil": "[yyyy-MM-dd]",
-        "frequencyPerDay": [consentFrequencyPerDay],
-        "combinedServiceIndicator": [consentCombinedServiceIndicator]
-    }'
+		[API_HOST]/psd2/consent/v1/consents
+		-H 'Authorization: Bearer [ACCESS_TOKEN]'
+		-H 'Content-Type: application/json'
+		-H 'PSU-IP-Address: [PSU-IP-Address]'
+		-H 'X-BicFi: [BICFI]'
+		-H 'X-Request-ID: [GUID]'
+		-d '{
+			"access": {
+				"accounts": [
+					{
+						"iban": "[consentIban]",
+						"currency": "[consentCurrency]"
+					},
+					{
+						"iban": "[otherConsentIban]",
+						"currency": "[consentCurrency]"
+					}
+				],
+				"balances": [
+					{
+						"iban": "[consentIban]",
+						"currency": "[consentCurrency]"
+					}
+				],
+				"transactions": [
+					{
+						"iban": "[consentIban]",
+						"currency": "[consentCurrency]"
+					}
+				]
+			},
+			"recurringIndicator": [consentRecurringIndicator],
+			"validUntil": "[yyyy-MM-dd]",
+			"frequencyPerDay": [consentFrequencyPerDay],
+			"combinedServiceIndicator": [consentCombinedServiceIndicator]
+		}'
 
 ### Headers
 
@@ -110,17 +110,18 @@ The `balances` and `transactions` consent request must contain a subset of the a
 ### Response headers
 
 `ASPSP-SCA-Approach` - see below for different values.
+`X-Request-ID`
 
 ## Get consent
 
 Once you have a consent you can use the id for that consent to get information about the consent.
 
     curl -X GET
-    https://api.sandbox.openbankingplatform.com/psd2/consent/v1/consents/[CONSENTID]
-    -H 'Authorization: Bearer [ACCESS_TOKEN]'
-    -H 'PSU-IP-Address: [PSU-IP-Address]'
-    -H 'X-BicFi: [BICFI]'
-    -H 'X-Request-ID: [GUID]'
+		[API_HOST]/psd2/consent/v1/consents/[CONSENTID]
+		-H 'Authorization: Bearer [ACCESS_TOKEN]'
+		-H 'PSU-IP-Address: [PSU-IP-Address]'
+		-H 'X-BicFi: [BICFI]'
+		-H 'X-Request-ID: [GUID]'
 
 ### Headers
 
@@ -161,23 +162,31 @@ See Create consent.
         "consentStatus": "received"
     }
 
+### Response headers
+
+`X-Request-ID`
+
 ## Delete consent
 
     curl -X DELETE
-    https://api.sandbox.openbankingplatform.com/psd2/consent/v1/consents/[CONSENTID]
-    -H 'Authorization: Bearer [ACCESS_TOKEN]'
-    -H 'PSU-IP-Address: [PSU-IP-Address]'
-    -H 'X-BicFi: [BICFI]'
-    -H 'X-Request-ID: [GUID]'
+		[API_HOST]/psd2/consent/v1/consents/[CONSENTID]
+		-H 'Authorization: Bearer [ACCESS_TOKEN]'
+		-H 'PSU-IP-Address: [PSU-IP-Address]'
+		-H 'X-BicFi: [BICFI]'
+		-H 'X-Request-ID: [GUID]'
+
+### Response headers
+
+`X-Request-ID`
 
 ## Get consent status
 
     curl -X GET
-    https://api.sandbox.openbankingplatform.com/psd2/consent/v1/consents/[CONSENTID]/status
-    -H 'Authorization: Bearer [ACCESS_TOKEN]'
-    -H 'PSU-IP-Address: [PSU-IP-Address]'
-    -H 'X-BicFi: [BICFI]'
-    -H 'X-Request-ID: [GUID]'
+		[API_HOST]/psd2/consent/v1/consents/[CONSENTID]/status
+		-H 'Authorization: Bearer [ACCESS_TOKEN]'
+		-H 'PSU-IP-Address: [PSU-IP-Address]'
+		-H 'X-BicFi: [BICFI]'
+		-H 'X-Request-ID: [GUID]'
 
 ### Headers
 
@@ -195,10 +204,14 @@ See Create consent.
 
 See possible values for status further down.
 
+### Response headers
+
+`X-Request-ID`
+
 ## Create consent authorisation
 
     curl -X POST
-        [HOST]/psd2/consent/v1/consents/[CONSENTID]/authorisations
+        [API_HOST]/psd2/consent/v1/consents/[CONSENTID]/authorisations
         -H 'Authorization: Bearer [ACCESS_TOKEN]'
         -H 'PSU-IP-Address: [PSU-IP-Address]'
         -H 'X-BicFi: [BICFI]'
@@ -229,12 +242,12 @@ See possible values for status further down.
 ### Response headers
 
 `ASPSP-SCA-Approach` - see below for different values.
-
+`X-Request-ID`
 
 ## Get consent authorisations
 
     curl -X GET
-        https://api.sandbox.openbankingplatform.com/psd2/consent/v1/consents/[CONSENTID]/authorisations
+        [API_HOST]/psd2/consent/v1/consents/[CONSENTID]/authorisations
         -H 'Authorization: Bearer [ACCESS_TOKEN]'
         -H 'PSU-IP-Address: [PSU-IP-Address]'
         -H 'X-BicFi: [BICFI]'
@@ -248,10 +261,14 @@ See possible values for status further down.
         ]
     }
 
+### Response headers
+
+`X-Request-ID`
+
 ## Get consent authorisation status
 
     curl -X GET
-        https://api.sandbox.openbankingplatform.com/psd2/consent/v1/consents/[CONSENTID]/authorisations/[CONSENTAUTHID]
+        [API_HOST]/psd2/consent/v1/consents/[CONSENTID]/authorisations/[CONSENTAUTHID]
         -H 'Authorization: Bearer [ACCESS_TOKEN]'
         -H 'PSU-IP-Address: [PSU-IP-Address]'
         -H 'X-BicFi: [BICFI]'
@@ -263,11 +280,14 @@ See possible values for status further down.
         "scaStatus": "started"
     }
 
+### Response headers
+
+`X-Request-ID`
 
 ## Update consent authorisation
 
     curl -X PUT
-        https://api.sandbox.openbankingplatform.com/psd2/consent/v1/consents/[CONSENTID]/authorisations/[CONSENTAUTHID]
+        [API_HOST]/psd2/consent/v1/consents/[CONSENTID]/authorisations/[CONSENTAUTHID]
         -H 'Authorization: Bearer [ACCESS_TOKEN]'
         -H 'PSU-IP-Address: [PSU-IP-Address]'
         -H 'X-BicFi: [BICFI]'
