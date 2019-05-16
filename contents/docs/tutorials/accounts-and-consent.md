@@ -273,7 +273,7 @@ See possible values for status further down.
         -H 'X-BicFi: [BICFI]'
         -H 'X-Request-ID: [GUID]'
         -d '{
-  	            "authenticationMethodId": "{{authenticationMethodId}}"
+            "authenticationMethodId": "[authenticationMethodId]"
         }'
 
 
