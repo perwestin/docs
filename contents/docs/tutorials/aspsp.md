@@ -30,7 +30,7 @@ This post will return a JSON object that looks like this:
         "token_type": "Bearer"
     }
 
-## Get a list of countries that we support
+## Get countries
 
     curl -X GET
     https://api.sandbox.openpaymentsplatform.com/psd2/aspspinformation/v1/countries
@@ -64,7 +64,7 @@ This post will return a JSON object that looks like this:
         ]
     }
 
-## Retrieve the cities where we have supported ASPSPs
+## Get cities
 
     curl -X GET
     https://api.sandbox.openpaymentsplatform.com/psd2/aspspinformation/v1/cities
@@ -105,7 +105,7 @@ The service will return all matches for the queries.
         ]
     }
 
-## Get ASPSPs for a countries and/or cities
+## Get ASPSPs
 
     curl -X GET
     https://api.sandbox.openpaymentsplatform.com/psd2/aspspinformation/v1/aspsps
@@ -141,7 +141,7 @@ The service will return all matches for the queries.
         ]
     }
 
-## Get ASPSP details
+## Get ASPSP
 
     curl -X GET
     https://api.sandbox.openpaymentsplatform.com/psd2/aspspinformation/v1/aspsps/[BICFI]
