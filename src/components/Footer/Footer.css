@@ -1,12 +1,12 @@
 .footer {
-    padding:2em 2em 0 2em;
-    background-color: rgb(29, 41, 55);
-    /* bottom: 0;
-    position: fixed;
-    left:0;
-    right:0; */
+    padding:1em;
+    background-color: #ffffff;
+    color: rgba(0,0,0,.87);
     margin-top:10%;
+    text-align: center;
+    border-top: 1px solid #dee2e6;
 }
+
 
 .first-page .footer {
     position: fixed;
@@ -42,14 +42,6 @@ footer h1:after,footer h2:after{
     justify-content: center;
 }
 
-.footer h2 {
-    color: white;
-}
-
-.footer {
-    color: white;
-}
-
 .footer-box {
     width:60%;
     padding: 0 20px;
@@ -74,7 +66,7 @@ margin: 1em -2em 0 -2em;
 }
 
 .footer a {
-    color:#f8b83f;
+    color: rgba(0,0,0,.87);
     text-decoration: none;
 }
 

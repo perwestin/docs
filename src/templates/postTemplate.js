@@ -22,7 +22,7 @@ function Template({
   }
 
   return (
-    <Layout sidebarRoot={frontmatter.root} width="50%">
+    <Layout sidebarRoot={frontmatter.root} pathname={fields.slug}>
       <div className="blog-post-container">
         <a className="editme" href={editUrl}>Edit me.... </a>
         <div className="blog-post">
