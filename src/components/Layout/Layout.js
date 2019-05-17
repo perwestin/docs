@@ -20,8 +20,7 @@ const Layout = ({
   // setPostPageOn,
   // setPostPageOff,
   sidebarRoot,
-  onSetSidebarDocked,
-  width = window.location.pathname === '/' ? "100%": "50%"
+  pathname
 }) => (
   <StaticQuery
     query={graphql`
@@ -43,12 +42,6 @@ const Layout = ({
       }
     `}
     render={data => {
-      if(window.location.pathname ==='/'){
-        document.body.className = 'first-page'; 
-      }
-      else{
-        document.body.className = '';
-      }
       const allPosts = data.allMarkdownRemark.edges.map(edge => edge.node.fields.slug)
       let onPostPage 
       if (typeof window !== 'undefined') {
@@ -64,6 +57,13 @@ const Layout = ({
         } else {
           // setPostPageOff()
           onPostPage = false
+        }
+
+        if(window.location.pathname ==='/'){
+          document.body.className = 'first-page'; 
+        }
+        else{
+          document.body.className = '';
         }
       }
       
@@ -85,8 +85,8 @@ const Layout = ({
             </Helmet>
             <Header siteTitle={data.site.siteMetadata.title} />
             {/* {(matches && window.location.pathname !== '/') ? <ResponsiveTopBar root={sidebarRoot}/> : null} */}
-            {(!matches && window.location.pathname !== '/') ? <><ResponsiveSidebar root={sidebarRoot}/> <ResponsiveAnchor /> </> : null }
-            <Container sidebarDocked={!matches} onPostPage={onPostPage} width={width}>
+            {(!matches && pathname !== '/') ? <><ResponsiveSidebar root={sidebarRoot} pathname={pathname}/> <ResponsiveAnchor /> </> : null }
+            <Container sidebarDocked={!matches} onPostPage={onPostPage} width={pathname === '/' ? "100%" : "50%"}>
               {children}
             </Container>
             <Footer/>

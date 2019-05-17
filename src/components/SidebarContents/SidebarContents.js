@@ -83,7 +83,7 @@ class SidebarContents extends Component {
 
   render() {
     const { expandedKey } = this.props.sidebar
-    const { root } = this.props
+    const { root, pathname } = this.props
     return (
       <StaticQuery
         query={graphql`
@@ -129,7 +129,7 @@ class SidebarContents extends Component {
                 </SubMenu>
               )
             }
-            if (window.location.pathname.includes(item.path)) {
+            if (pathname.includes(item.path)) {
               return (
                 <Menu.Item key={item.key}>
                   {item.title}
@@ -142,7 +142,7 @@ class SidebarContents extends Component {
               </Menu.Item>
             )
           })
-          const path = window.location.pathname.replace(pathPrefix.slice(0,-1),"")
+          const path = pathname.replace(pathPrefix.slice(0,-1),"")
           const selectedKeys = data.allMarkdownRemark.edges
             .filter(item => path === item.node.fields.slug ||
               (path.slice(0,-1) === item.node.fields.slug && path.slice(-1) === '/'))

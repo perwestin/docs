@@ -18,7 +18,7 @@ class Swagger extends React.Component {
 function Template({pageContext}) {
 
     return (
-        <Layout sidebarRoot="/docs">
+        <Layout sidebarRoot="/docs" pathname={pageContext.pathname}>
             <Swagger spec={pageContext.spec} />
         </Layout>
     )
