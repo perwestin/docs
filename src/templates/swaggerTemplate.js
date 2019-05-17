@@ -8,7 +8,6 @@ class Swagger extends React.Component {
       window.SwaggerUI({
           dom_id: '#swagger',
           url: this.props.spec
-          //url: 'https://api.swaggerhub.com/apis/openpayments/ASPSPInformationService/v1'
       });
     }
     render() {
@@ -17,12 +16,12 @@ class Swagger extends React.Component {
   }
 
 function Template({pageContext}) {
+
     return (
-        <Layout>
+        <Layout sidebarRoot="/docs">
             <Swagger spec={pageContext.spec} />
         </Layout>
     )
 }
-
 
 export default connect() (Template)
