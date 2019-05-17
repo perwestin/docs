@@ -11,8 +11,11 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body.first-page {
-
+body.first-page .main-content{
+  height:100% !important;
+}
+body.first-page .main-content-container{
+  height:100%;
 }
 
 body {
@@ -592,6 +595,8 @@ pre tt:after {
 
 .editme {
   float: right;
+  font-size:12px;
+  font-weight:200 !important;
 }
 
 .largerwhitetext {

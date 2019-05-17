@@ -21,11 +21,11 @@ class Container extends Component {
           height: 'auto'
         }}
       >
-        <div
+        <div className='main-content-container'
           style={{
             margin: '0 auto',
             paddingTop: 0,
-            backgroundColor: backgroundColor,
+            backgroundColor: backgroundColor
           }}
         >
           {this.props.children}
