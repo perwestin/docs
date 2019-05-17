@@ -15,6 +15,7 @@ class Header extends Component {
       return (
         <div className='header'>
           <Logo />
+          <a className = "register" href="/obp.postman_collection.json" target="_blank">Postman</a>
           <a className = "register" href="https://auth.sandbox.openbankingplatform.com/client/register" target="_blank">Register a client</a>
         </div>)
     } else {
@@ -24,6 +25,7 @@ class Header extends Component {
           <Link to= '/'>
             <Logo />
           </Link>
+          <a className = "register" href="/obp.postman_collection.json" target="_blank">Postman</a>
           <a className="register" href="https://auth.sandbox.openbankingplatform.com/client/register" target="_blank">Register a client</a>
         </div>
       )

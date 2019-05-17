@@ -80,6 +80,13 @@ module.exports = {
       },
     },
     `gatsby-plugin-remove-trailing-slashes`,
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        // replace "UA-110256897-2" with your own Tracking ID
+        trackingId: "UA-110256897-2",
+      },
+    },
   ],
   pathPrefix: '/',
 }
