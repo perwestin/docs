@@ -221,7 +221,7 @@ See [Payment initiation request](/docs/tutorials/payments#payment-initiation-req
 
 ## Get payment initiation authorisation sub-resources request
 
-   curl -X GET
+    curl -X GET
         [API_HOST]/psd2/paymentinitiation/v1/payments/[PAYMENT_PRODUCT]/[PAYMENT_ID]/authorisations
         -H 'Authorization: Bearer [ACCESS_TOKEN]'
         -H 'PSU-IP-Address: [PSU_IP_ADDRESS]'
@@ -251,7 +251,7 @@ See [Payment initiation request](/docs/tutorials/payments#payment-initiation-req
 
 ## Read the SCA status of the payment initiation
 
-   curl -X GET
+    curl -X GET
         [API_HOST]/psd2/paymentinitiation/v1/payments/[PAYMENT_PRODUCT]/[PAYMENT_ID]/authorisations/[PAYMENT_AUTH_ID]
         -H 'Authorization: Bearer [ACCESS_TOKEN]'
         -H 'PSU-IP-Address: [PSU_IP_ADDRESS]'
@@ -279,7 +279,7 @@ See [Payment initiation request](/docs/tutorials/payments#payment-initiation-req
 
 ## Update PSU data for payment initiation
 
-   curl -X PUT
+    curl -X PUT
         [API_HOST]/psd2/paymentinitiation/v1/payments/[PAYMENT_PRODUCT]/[PAYMENT_ID]/authorisations/[PAYMENT_AUTH_ID]
         -H 'Authorization: Bearer [ACCESS_TOKEN]'
         -H 'PSU-IP-Address: [PSU_IP_ADDRESS]'
