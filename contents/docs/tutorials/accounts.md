@@ -5,12 +5,18 @@ parents: ["Get Started"]
 ---
 # Getting started with accounts
 
+Available `AUTH_HOST`s
+- https://auth.sandbox.openbankingplatform.com
+
+Available `API_HOST`s
+- https://api.sandbox.openbankingplatform.com
+
 ## Acquire an access token for Account Information
 
     curl -X POST
 		[AUTH_HOST]/connect/token
 		-H 'Content-Type: application/x-www-form-urlencoded'
-		-d 'client_id=[YOUR_CLIENT_ID]&client_secret=[YOUR_CLIENT_SECRET]&scope=accountinformation&grant_type=client_credentials'
+		-d 'client_id=[CLIENT_ID]&client_secret=[CLIENT_SECRET]&scope=accountinformation&grant_type=client_credentials'
 
 This post will return a JSON object that looks like this:
 
@@ -23,7 +29,7 @@ This post will return a JSON object that looks like this:
 ## Acquire a consent
 
 You'll need a valid consent for the ASPSP you want to interact with.
-Follow instructions in [the Consent API](/docs/tutorials/accounts-and-consent#create-consent).
+Follow instructions in [the Consent API](/docs/tutorials/consent#create-consent).
 
 ## Read account list
 
@@ -31,10 +37,10 @@ Follow instructions in [the Consent API](/docs/tutorials/accounts-and-consent#cr
 		[API_HOST]/psd2/accountinformation/v1/accounts
 		-H 'Authorization: Bearer [ACCESS_TOKEN]'
 		-H 'Content-Type: application/json'
-		-H 'PSU-IP-Address: [PSU-IP-Address]'
+		-H 'PSU-IP-Address: [PSU_IP_Address]'
 		-H 'X-BicFi: [BICFI]'
 		-H 'X-Request-ID: [GUID]'
-		-H 'Consent-ID: [STRING]'
+		-H 'Consent-ID: [CONSENT_ID]'
 
 ### Headers
 
@@ -48,39 +54,31 @@ Follow instructions in [the Consent API](/docs/tutorials/accounts-and-consent#cr
 	{
 		"accounts": [
 			{
-				"resourceId": "[ACCOUNTID]",
-				"iban": "SE5460000000000403333911",
-				"bban": "403333911",
+				"resourceId": "[ACCOUNT_ID]",
+				"iban": "[IBAN]",
+				"bban": "[BBAN]",
 				"currency": "SEK",
-				"bic": "HANDSESS"
-			},
-			{
-				"resourceId": "5a72e1531b6586f34a0d7ce4",
-				"iban": "SE8160000000000401975231",
-				"bban": "401975231",
-				"currency": "SEK",
-				"name": "Almas konto",
-				"bic": "HANDSESS"
+				"bic": "[BICFI]"
 			}
 		]
 	}
 
 ### Response headers
 
-`X-Request-ID`
+- `X-Request-ID`
 
 ## Read account details
 
-Use one of the [ACCOUNTID]s to get more information about a specific account.
+Use one of the [ACCOUNT_ID]s to get more information about a specific account.
 
 	curl -X GET
-		[API_HOST]/psd2/accountinformation/v1/accounts/[ACCOUNTID]
+		[API_HOST]/psd2/accountinformation/v1/accounts/[ACCOUNT_ID]
 		-H 'Authorization: Bearer [ACCESS_TOKEN]'
 		-H 'Content-Type: application/json'
-		-H 'PSU-IP-Address: [PSU-IP-Address]'
+		-H 'PSU-IP-Address: [PSU_IP_Address]'
 		-H 'X-BicFi: [BICFI]'
 		-H 'X-Request-ID: [GUID]'
-		-H 'Consent-ID: [STRING]'
+		-H 'Consent-ID: [CONSENT_ID]'
 
 ### Headers
 
@@ -88,22 +86,22 @@ See Read account list.
 
 ### Path parameter
 
-`ACCOUNTID` Refers to `resourceId` in the response from [Read account list](#read-account-list).
+- `ACCOUNT_ID` Refers to `resourceId` in the response from [Read account list](#read-account-list).
 
 ### Query parameters
 
-`withBalance` Boolean, include balances in response. Optional.
+- `withBalance` Boolean, include balances in response. Optional.
 
 ### Response
 
 	{
-		"resourceId": "5a72e1531b6586f34a0d7ce3",
-		"iban": "SE5460000000000403333911",
-		"bban": "403333911",
+		"resourceId": "[ACCOUNT_ID]",
+		"iban": "[IBAN]",
+		"bban": "[BBAN]",
 		"currency": "SEK",
-		"cashAccountType": "Allkortskonto",
+		"cashAccountType": "[CASH_ACCOUNT_TYPE]",
 		"status": "enabled",
-		"bic": "HANDSESS",
+		"bic": "[BICFI]",
 		"usage": "PRIV",
 		"balances": [
 			{
@@ -127,20 +125,20 @@ See Read account list.
 
 ### Response headers
 
-`X-Request-ID`
+- `X-Request-ID`
 
 ## Read balance
 
-Retreive balances for a given [ACCOUNTID].
+Retreive balances for a given [ACCOUNT_ID].
 
 	curl -X GET
-		[API_HOST]/psd2/accountinformation/v1/accounts/[ACCOUNTID]/balances
+		[API_HOST]/psd2/accountinformation/v1/accounts/[ACCOUNT_ID]/balances
 		-H 'Authorization: Bearer [ACCESS_TOKEN]'
 		-H 'Content-Type: application/json'
-		-H 'PSU-IP-Address: [PSU-IP-Address]'
+		-H 'PSU-IP-Address: [PSU_IP_Address]'
 		-H 'X-BicFi: [BICFI]'
 		-H 'X-Request-ID: [GUID]'
-		-H 'Consent-ID: [STRING]'
+		-H 'Consent-ID: [CONSENT_ID]'
 
 ### Headers
 
@@ -148,7 +146,7 @@ See Read account list.
 
 ### Path parameter
 
-`ACCOUNTID` refers to `resourceId` in the response from [Read account list](#read-account-list).
+- `ACCOUNT_ID` refers to `resourceId` in the response from [Read account list](#read-account-list).
 
 ### Response
 
@@ -175,20 +173,20 @@ See Read account list.
 
 ### Response headers
 
-`X-Request-ID`
+- `X-Request-ID`
 
 ## Read transaction list
 
-Retreive transactions for a given [ACCOUNTID].
+Retreive transactions for a given [ACCOUNT_ID].
 
 	curl -X GET
-		[API_HOST]/psd2/accountinformation/v1/accounts/[ACCOUNTID]/transactions?bookingStatus=[BOOKINGSTATUS]&dateFrom=[DATEFROM]
+		[API_HOST]/psd2/accountinformation/v1/accounts/[ACCOUNT_ID]/transactions?bookingStatus=[BOOKING_STATUS]&dateFrom=[DATE_FROM]
 		-H 'Authorization: Bearer [ACCESS_TOKEN]'
 		-H 'Content-Type: application/json'
-		-H 'PSU-IP-Address: [PSU-IP-Address]'
+		-H 'PSU-IP-Address: [PSU_IP_Address]'
 		-H 'X-BicFi: [BICFI]'
 		-H 'X-Request-ID: [GUID]'
-		-H 'Consent-ID: [STRING]'
+		-H 'Consent-ID: [CONSENT_ID]'
 
 ### Headers
 
@@ -196,7 +194,7 @@ See Read account list.
 
 ### Path parameter
 
-`ACCOUNTID` refers to `resourceId` in the response from [Read account list](#read-account-list).
+- `ACCOUNT_ID` refers to `resourceId` in the response from [Read account list](#read-account-list).
 
 ### Query parameters
 
@@ -210,44 +208,16 @@ See Read account list.
 		"transactions": {
 			"booked": [
 				{
-					"transactionId": "wiY29udGVudCI6MzM2MzMuMjV9fX0=",
+					"transactionId": "[TRANSACTION_ID]",
 					"transactionAmount": {
 						"currency": "SEK",
 						"amount": "4101.24"
-					}
-				},
-				{
-					"transactionId": "Jjb250ZW50IjozNzczNC40OX19fQ==",
-					"transactionAmount": {
-						"currency": "SEK",
-						"amount": "1145"
-					}
-				},
-				{
-					"transactionId": "IsImNvbnRlbnQiOjM2NTg5LjQ5fX19",
-					"transactionAmount": {
-						"currency": "SEK",
-						"amount": "1450"
-					}
-				},
-				{
-					"transactionId": "IsImNvbnRlbnQiOjM4MDM5LjQ5fX19",
-					"transactionAmount": {
-						"currency": "SEK",
-						"amount": "200"
-					}
-				},
-				{
-					"transactionId": "wiY29udGVudCI6MzgyMzkuNDl9fX0=",
-					"transactionAmount": {
-						"currency": "SEK",
-						"amount": "32256"
 					}
 				}
 			],
 			"pending": [
 				{
-					"transactionId": "9uIjoiUHJlbCBGb29kdHJ1Y2sifQ==",
+					"transactionId": "[TRANSACTION_ID]",
 					"transactionAmount": {
 						"currency": "SEK",
 						"amount": "105"
@@ -255,7 +225,7 @@ See Read account list.
 				}
 			],
 			"_links": {
-				"account": "/psd2/accountinformation/v1/accounts/5a72e1531b6586f34a0d7ce3"
+				"account": "/psd2/accountinformation/v1/accounts/[ACCOUNT_ID]"
 			}
 		},
 		"balances": []
@@ -263,20 +233,20 @@ See Read account list.
 
 ### Response headers
 
-`X-Request-ID`
+- `X-Request-ID`
 
 ## Read transaction details
 
-Retreive transaction details for a given [ACCOUNTID] and [TRANSACTIONID].
+Retreive transaction details for a given [ACCOUNT_ID] and [TRANSACTIONID].
 
 	curl -X GET
-		[API_HOST]/psd2/accountinformation/v1/accounts/[ACCOUNTID]/transactions/[TRANSACTIONID]
+		[API_HOST]/psd2/accountinformation/v1/accounts/[ACCOUNT_ID]/transactions/[TRANSACTIONID]
 		-H 'Authorization: Bearer [ACCESS_TOKEN]'
 		-H 'Content-Type: application/json'
-		-H 'PSU-IP-Address: [PSU-IP-Address]'
+		-H 'PSU-IP-Address: [PSU_IP_Address]'
 		-H 'X-BicFi: [BICFI]'
 		-H 'X-Request-ID: [GUID]'
-		-H 'Consent-ID: [STRING]'
+		-H 'Consent-ID: [CONSENT_ID]'
 
 ### Headers
 
@@ -284,32 +254,32 @@ See Read account list.
 
 ### Path parameter
 
-- `ACCOUNTID` refers to `resourceId` in the response from [Read account list](#read-account-list).
-- `TRANSACTIONID` refers to `transactionId` in the response from [Read transaction list of an account](#read-transaction-list-of-an-account).
+- `ACCOUNT_ID` refers to `resourceId` in the response from [Read account list](#read-account-list).
+- `TRANSACTION_ID` refers to `TRANSACTION_ID` in the response from [Read transaction list of an account](#read-transaction-list-of-an-account).
 
 ### Response
 
 	{
-		"transactionId": "wiY29udGVudCI6MzM2MzMuMjV9fX0=",
+		"transactionId": "[TRANSACTION_ID]",
 		"transactionAmount": {
 			"currency": "SEK",
 			"amount": "4101.24"
 		},
 		"creditorAccount": {
-			"iban": "",
-			"bban": ""
+			"iban": "[CREDITOR_IBAN]",
+			"bban": "[CREDITOR_BBAN]"
 		},
 		"debtorAccount": {
-			"iban": "",
-			"bban": ""
+			"iban": "[DEBTOR_IBAN]",
+			"bban": "[DEBTOR_BBAN]"
 		},
-		"remittanceInformationUnstructured": "HS 02123456",
+		"remittanceInformationUnstructured": "Short msg",
 		"purposeCode": "OTHR"
 	}
 
 ### Response headers
 
-`X-Request-ID`
+- `X-Request-ID`
 
 ## Schemas
 

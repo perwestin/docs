@@ -5,6 +5,12 @@ parents: ["Get Started"]
 ---
 # Getting started with the payment initiation
 
+Available `AUTH_HOST`s
+- https://auth.sandbox.openbankingplatform.com
+
+Available `API_HOST`s
+- https://api.sandbox.openbankingplatform.com
+
 ## Introduction
 
 This documentation describes the payment flow.
@@ -14,7 +20,7 @@ This documentation describes the payment flow.
     curl -X POST
 		[AUTH_HOST]/connect/token
 		-H 'Content-Type: application/x-www-form-urlencoded'
-		-d 'client_id=[YOUR_CLIENT_ID]&client_secret=[YOUR_CLIENT_SECRET]&scope=paymentinitiation&grant_type=client_credentials'
+		-d 'client_id=[CLIENT_ID]&client_secret=[CLIENT_SECRET]&scope=paymentinitiation&grant_type=client_credentials'
 
 This post will return a JSON object that looks like this:
 
@@ -34,23 +40,23 @@ This post will return a JSON object that looks like this:
         -H 'X-BicFi: [BICFI]'
         -H 'X-Request-ID: [GUID]'
         -d '{
-        "instructedAmount":
-        {
-            "currency": "SEK",
-            "amount": "142.66"
-        },
-        "debtorAccount":
-        {
-            "iban": "[DEBTOR_IBAN]",
-            "currency": "SEK"
-        },
-        "creditorName": "Enterprise Inc",
-        "creditorAccount":
-        {
-            "iban": "[CREDITOR_IBAN]",
-            "currency": "SEK"
-        },
-        "remittanceInformationUnstructured": "[MESSAGE]"
+			"instructedAmount":
+			{
+				"currency": "SEK",
+				"amount": "142.66"
+			},
+			"debtorAccount":
+			{
+				"iban": "[DEBTOR_IBAN]",
+				"currency": "SEK"
+			},
+			"creditorName": "Enterprise Inc",
+			"creditorAccount":
+			{
+				"iban": "[CREDITOR_IBAN]",
+				"currency": "SEK"
+			},
+			"remittanceInformationUnstructured": "[MESSAGE]"
         }'
 
 ### Headers
@@ -72,17 +78,17 @@ The [ASPSP details endpoint](/docs/tutorials/aspsp#get-aspsp) will tell you what
 ### Response
 
     {
-        "transactionStatus": "[TRANSACTION_STATUS]",
+        "transactionStatus": "ACTC",
         "paymentId": "[PAYMENT_ID]",
         "_links": {
             "startAuthorisationWithTransactionAuthorisation": {
-                "href": "/psd2/paymentinitiation/v1/payments/[PAYMENT_PRODUCT]]/[PAYMENT_ID]/authorisations"
+                "href": "/psd2/paymentinitiation/v1/payments/[PAYMENT_PRODUCT]/[PAYMENT_ID]/authorisations"
             },
             "self": {
-                "href": "/psd2/paymentinitiation/v1/payments/[PAYMENT_PRODUCT]]/[PAYMENT_ID]"
+                "href": "/psd2/paymentinitiation/v1/payments/[PAYMENT_PRODUCT]/[PAYMENT_ID]"
             },
             "status": {
-                "href": "/psd2/paymentinitiation/v1/payments/[PAYMENT_PRODUCT]]/[PAYMENT_ID]/status"
+                "href": "/psd2/paymentinitiation/v1/payments/[PAYMENT_PRODUCT]/[PAYMENT_ID]/status"
             }
         },
         "psuMessage": "Please confirm payment [PAYMENT_ID]"
@@ -96,7 +102,7 @@ The [ASPSP details endpoint](/docs/tutorials/aspsp#get-aspsp) will tell you what
 ## Get payment information
 
     curl -X GET
-        [API_HOST]/psd2/paymentinitiation/v1/payments/domestic/[PAYMENT_ID]
+        [API_HOST]/psd2/paymentinitiation/v1/payments/[PAYMENT_PRODUCT]/[PAYMENT_ID]
         -H 'Authorization: Bearer [ACCESS_TOKEN]'
         -H 'PSU-IP-Address: [PSU_IP_ADDRESS]'
         -H 'X-BicFi: [BICFI]'
@@ -115,7 +121,7 @@ See [Payment initiation request](/docs/tutorials/payments#payment-initiation-req
     {
         "creditorAgent": "[BICFI]",
         "remittanceInformationUnstructured": "[MESSAGE]",
-        "transactionStatus": "[TRANSACTION_STATUS]",
+        "transactionStatus": "ACTC",
         "creditorAccount": {
             "iban": "[CREDITOR_IBAN]",
             "currency": "SEK"
@@ -144,7 +150,7 @@ Not implemented yet.
 ## Payment initiation status request
 
     curl -X GET
-        [API_HOST]/psd2/paymentinitiation/v1/payments/domestic/[PAYMENT_ID]/status
+        [API_HOST]/psd2/paymentinitiation/v1/payments/[PAYMENT_PRODUCT]/[PAYMENT_ID]/status
         -H 'Authorization: Bearer [ACCESS_TOKEN]'
         -H 'PSU-IP-Address: [PSU_IP_ADDRESS]'
         -H 'X-BicFi: [BICFI]'
@@ -172,7 +178,7 @@ See [Payment initiation request](/docs/tutorials/payments#payment-initiation-req
 ## Start the authorisation process for a payment initiation
 
     curl -X POST
-        [API_HOST]/psd2/paymentinitiation/v1/payments/domestic/[PAYMENT_ID]/authorisations
+        [API_HOST]/psd2/paymentinitiation/v1/payments/[PAYMENT_PRODUCT]/[PAYMENT_ID]/authorisations
         -H 'Authorization: Bearer [ACCESS_TOKEN]'
         -H 'PSU-IP-Address: [PSU_IP_ADDRESS]'
         -H 'X-BicFi: [BICFI]'
@@ -197,13 +203,12 @@ See [Payment initiation request](/docs/tutorials/payments#payment-initiation-req
         "scaMethods": [
             {
                 "authenticationType": "PUSH_OTP",
-                "authenticationMethodId": "Mobilt BankID",
-                "name": "Mobilt BankID"
+                "authenticationMethodId": "[AUTHENTICATION_METHOD_ID]"
             }
         ],
         "_links": {
             "authoriseTransaction": {
-                "href": "/psd2/paymentinitiation/v1/payments/domestic/[PAYMENT_ID]/authorisations/[PAYMENT_AUTH_ID]"
+                "href": "/psd2/paymentinitiation/v1/payments/[PAYMENT_PRODUCT]/[PAYMENT_ID]/authorisations/[PAYMENT_AUTH_ID]"
             }
         }
     }
@@ -216,15 +221,163 @@ See [Payment initiation request](/docs/tutorials/payments#payment-initiation-req
 
 ## Get payment initiation authorisation sub-resources request
 
+   curl -X GET
+        [API_HOST]/psd2/paymentinitiation/v1/payments/[PAYMENT_PRODUCT]/[PAYMENT_ID]/authorisations
+        -H 'Authorization: Bearer [ACCESS_TOKEN]'
+        -H 'PSU-IP-Address: [PSU_IP_ADDRESS]'
+        -H 'X-BicFi: [BICFI]'
+        -H 'X-Request-ID: [GUID]'
+
+### Headers
+
+See [Payment initiation request](/docs/tutorials/payments#payment-initiation-request)
+
+### Path parameters
+
+`PAYMENT_ID` that was returned from the initiation request.
+
+### Response
+
+	{
+		"authorisationIds": [
+			"[PAYMENT_AUTH_ID"
+		]
+	}
+
+### Response headers
+
+- `X-Request-ID`
+
 
 ## Read the SCA status of the payment initiation
+
+   curl -X GET
+        [API_HOST]/psd2/paymentinitiation/v1/payments/[PAYMENT_PRODUCT]/[PAYMENT_ID]/authorisations/[PAYMENT_AUTH_ID]
+        -H 'Authorization: Bearer [ACCESS_TOKEN]'
+        -H 'PSU-IP-Address: [PSU_IP_ADDRESS]'
+        -H 'X-BicFi: [BICFI]'
+        -H 'X-Request-ID: [GUID]'
+
+### Headers
+
+See [Payment initiation request](/docs/tutorials/payments#payment-initiation-request)
+
+### Path parameters
+
+`PAYMENT_ID` that was returned from the initiation request.
+
+### Response
+
+	{
+		"scaStatus": "received"
+	}
+
+### Response headers
+
+- `X-Request-ID`
 
 
 ## Update PSU data for payment initiation
 
+   curl -X PUT
+        [API_HOST]/psd2/paymentinitiation/v1/payments/[PAYMENT_PRODUCT]/[PAYMENT_ID]/authorisations/[PAYMENT_AUTH_ID]
+        -H 'Authorization: Bearer [ACCESS_TOKEN]'
+        -H 'PSU-IP-Address: [PSU_IP_ADDRESS]'
+        -H 'X-BicFi: [BICFI]'
+        -H 'X-Request-ID: [GUID]'
+		-d '{
+			"authenticationMethodId": "[AUTHENTICATION_METHOD_ID]"
+		}'
+
+### Headers
+
+See [Payment initiation request](/docs/tutorials/payments#payment-initiation-request)
+
+### Path parameters
+
+`PAYMENT_ID` that was returned from the initiation request.
+
+### Response
+
+	{
+		"chosenScaMethod": {
+			"authenticationType": "PUSH_OTP",
+			"authenticationMethodId": "[AUTHENTICATION_METHOD_ID]"
+		},
+		"_links": {
+			"scaOAuth": {
+				"href": "[AUTH_HOST]/connect/authorize?client_id=[CLIENT_ID]&scope=paymentinitiation&response_type=code&redirect_uri=[TPP_REDIRECT_URI]&state=[TPP_STATE]&acr_values=idp:[BICFI]%20paymentId:[PAYMENT_ID]%20paymentAuthorisationId:[PAYMENT_AUTH_ID]"
+			}
+		},
+		"scaStatus": "scaMethodSelected"
+	}
+
+### Response headers
+
+- `X-Request-ID`
+- `ASPSP-SCA-Approach` see below for different values.
+
+### Test procedure
+
+If the ASPSP uses OAuth:
+- The above endpoint returns an OAuth authorize URL in the `scoOAuth` field. 
+- Replace all the bracketed fields with real values. In your code you will have to replace only the two TPP values.
+    - `TPP_REDIRECT_URI` should be the URL to redirect to after auth is completed.
+    - `TPP_STATE` can be anything the TPP wants.
+    - `BICIFI`
+- Run it in a browser. In this case you will get to a page at the ESSESESS sandbox. It may differ for different banks.
+- In the page you get to you can use one of the following fake personal numbers:
+    - 9311219639
+    - 9311219589
+    - 8811215477
+    - 8811212862
+    - 8311211356
+- When you submit the data you will be redirected to the `[TPP_REDIRECT_URI]`
+- On this URI a `code` param will be added. 
+- Use this `code` in the subsequent call when getting the account information token.
+
+Call the OAuth token endpoint to finalize payment.
+
+    curl -X POST
+        [AUTH_HOST]/connect/token
+        -H 'Content-Type: application/x-www-form-urlencoded'
+        -H 'X-PaymentAuthorisationId: [PAYMENT_AUTH_ID]'
+        -H 'X-PaymentId: [PAYMENT_ID]'
+        -d 'client_id=[CLIENT_ID]&client_secret=[CLIENT_SECRET]&code=[CODE]&redirect_uri=[TPP_REDIRECT_URI]&grant_type=authorization_code'
 
 ## Schemas
 
 ### Transaction status
 
 Read more about the potential values in the NextGen specification.
+
+### ASPSP-SCA-Approach
+
+This is a response header that describes how to proceed with authentication. 
+Can be one of the following values. See the NextGen specs for more details.
+
+- EMBEDDED
+- DECOUPLED
+- REDIRECT
+
+### Payment authorisation status
+
+`scaStatus` for a pyament authorisation can be one of the following values:
+
+- received
+- psuIdentified
+- psuAuthenticated
+- scaMethodSelected
+- started
+- finalised
+- failed
+- exempted
+
+### Authentication type
+
+`authenticationType` for a pyament authorisation can be one of the following values:
+
+- SMS_OTP
+- CHIP_OTP
+- PHOTO_OTP
+- PUSH_OTP

@@ -19,7 +19,7 @@ have in the Open Payments ecosystem. Here is a [tutorial to get started](/docs/t
 
 Then we have Account Information where it is possible to list all accounts for a PSU (Payment Service User) and also account details 
 like list of transactions, different identification schemes and so on. The account APIs work together with the consent API to form 
-a building block in your applicataion. Read more in the [accounts and consent tutorial](/docs/tutorials/accounts-and-consent).
+a building block in your applicataion. Read more in the [consents tutorial](/docs/tutorials/consents) and [accounts tutorial](/docs/tutorials/accounts).
 
 Finally there is Payment Initiation where actual payments are initiated. This API uses its own idea about consent in concordance with the
 NextGen specification. So it is not possible to get a consent for payments from the consent APIs. Read more about how to initiate 

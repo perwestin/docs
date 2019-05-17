@@ -8,6 +8,12 @@ parents: ["Get Started"]
 Open Payments Platform uses OAuth2 (specifically OIDC) for authentication. In the following sections, we have provided step
 by step instructions on how you will interact with the platform.
 
+Available `AUTH_HOST`s
+- https://auth.sandbox.openbankingplatform.com
+
+Available `API_HOST`s
+- https://api.sandbox.openbankingplatform.com
+
 ## Register a client
 
 Navigate to [https://auth.sandbox.openbankingplatform.com/client/register](the client registration page) to acquire client credentials.
@@ -18,9 +24,9 @@ You will get a `client_id` and a `client_secret` that you can use to authenticat
 ## Acquire an access token for ASPSP Information
 
     curl -X POST
-    https://auth.sandbox.openpaymentsplatform.com/connect/token
-    -H 'Content-Type: application/x-www-form-urlencoded'
-    -d 'client_id=[YOUR_CLIENT_ID]&client_secret=[YOUR_CLIENT_SECRET]&scope=aspspinformation&grant_type=client_credentials'
+		[AUTH_HOST]/connect/token
+		-H 'Content-Type: application/x-www-form-urlencoded'
+		-d 'client_id=[CLIENT_ID]&client_secret=[CLIENT_SECRET]&scope=aspspinformation&grant_type=client_credentials'
 
 This post will return a JSON object that looks like this:
 
@@ -33,13 +39,13 @@ This post will return a JSON object that looks like this:
 ## Get countries
 
     curl -X GET
-    https://api.sandbox.openpaymentsplatform.com/psd2/aspspinformation/v1/countries
-    -H 'Authorization: Bearer [ACCESS_TOKEN]'
-    -H 'X-Request-ID: [GUID]'
+		[API_HOST]/psd2/aspspinformation/v1/countries
+		-H 'Authorization: Bearer [ACCESS_TOKEN]'
+		-H 'X-Request-ID: [GUID]'
 
 ### Query parameters
 
-`isoCountryCodes` : a comma separated list of countries to retrieve. Optional.
+- `isoCountryCodes` a comma separated list of countries to retrieve. Optional.
 
 ### Response
 
@@ -67,14 +73,14 @@ This post will return a JSON object that looks like this:
 ## Get cities
 
     curl -X GET
-    https://api.sandbox.openpaymentsplatform.com/psd2/aspspinformation/v1/cities
-    -H 'Authorization: Bearer [ACCESS_TOKEN]'
-    -H 'X-Request-ID: [GUID]'
+		[API_HOST]/psd2/aspspinformation/v1/cities
+		-H 'Authorization: Bearer [ACCESS_TOKEN]'
+		-H 'X-Request-ID: [GUID]'
 
 ### Query parameters
 
-`isoCountryCodes` : a comma separated list of countries to retrieve cities for. Optional.
-`cityIds` : a comma separated list of city ids to retrieve. Optional.
+- `isoCountryCodes` a comma separated list of countries to retrieve cities for. Optional.
+- `cityIds` a comma separated list of city ids to retrieve. Optional.
 
 The service will return all matches for the queries.
 
@@ -108,14 +114,14 @@ The service will return all matches for the queries.
 ## Get ASPSPs
 
     curl -X GET
-    https://api.sandbox.openpaymentsplatform.com/psd2/aspspinformation/v1/aspsps
-    -H 'Authorization: Bearer [ACCESS_TOKEN]'
-    -H 'X-Request-ID: [GUID]'
+		[API_HOST]/psd2/aspspinformation/v1/aspsps
+		-H 'Authorization: Bearer [ACCESS_TOKEN]'
+		-H 'X-Request-ID: [GUID]'
 
 ### Query parameters
 
-`isoCountryCodes` : a comma separated list of countries to retrieve ASPSPs for. Optional.
-`cityIds` : a comma separated list of city ids to retrieve ASPSPs for. Optional.
+- `isoCountryCodes` a comma separated list of countries to retrieve ASPSPs for. Optional.
+- `cityIds` a comma separated list of city ids to retrieve ASPSPs for. Optional.
 
 The service will return all matches for the queries.
 
@@ -144,13 +150,13 @@ The service will return all matches for the queries.
 ## Get ASPSP
 
     curl -X GET
-    https://api.sandbox.openpaymentsplatform.com/psd2/aspspinformation/v1/aspsps/[BICFI]
-    -H 'Authorization: Bearer [ACCESS_TOKEN]'
-    -H 'X-Request-ID: [GUID]'
+		[API_HOST]/psd2/aspspinformation/v1/aspsps/[BICFI]
+		-H 'Authorization: Bearer [ACCESS_TOKEN]'
+		-H 'X-Request-ID: [GUID]'
 
 ### Path parameter
 
-`BICFI` : ASPSP identifier. It can be known upfront or it can be picked from the previous response.
+- `BICFI` ASPSP identifier. It can be known upfront or it can be picked from the previous response.
 
 ### Response
 

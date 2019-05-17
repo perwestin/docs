@@ -5,12 +5,18 @@ parents: ["Get Started"]
 ---
 # Getting started with consents
 
+Available `AUTH_HOST`s
+- https://auth.sandbox.openbankingplatform.com
+
+Available `API_HOST`s
+- https://api.sandbox.openbankingplatform.com
+
 ## Acquire an access token for Account Information
 
     curl -X POST
 		[AUTH_HOST]/connect/token
 		-H 'Content-Type: application/x-www-form-urlencoded'
-		-d 'client_id=[YOUR_CLIENT_ID]&client_secret=[YOUR_CLIENT_SECRET]&scope=accountinformation&grant_type=client_credentials'
+		-d 'client_id=[CLIENT_ID]&client_secret=[CLIENT_SECRET]&scope=accountinformation&grant_type=client_credentials'
 
 This post will return a JSON object that looks like this:
 
@@ -26,38 +32,38 @@ This post will return a JSON object that looks like this:
 		[API_HOST]/psd2/consent/v1/consents
 		-H 'Authorization: Bearer [ACCESS_TOKEN]'
 		-H 'Content-Type: application/json'
-		-H 'PSU-IP-Address: [PSU-IP-Address]'
+		-H 'PSU-IP-Address: [PSU_IP_Address]'
 		-H 'X-BicFi: [BICFI]'
 		-H 'X-Request-ID: [GUID]'
 		-d '{
 			"access": {
 				"accounts": [
 					{
-						"iban": "[consentIban]",
-						"currency": "[consentCurrency]"
+						"iban": "[CONSENT_IBAN]",
+						"currency": "[CONSENT_CURRENCY]"
 					},
 					{
-						"iban": "[otherConsentIban]",
-						"currency": "[consentCurrency]"
+						"iban": "[OTHER_CONSENT_IBAN]",
+						"currency": "[CONSENT_CURRENCY]"
 					}
 				],
 				"balances": [
 					{
-						"iban": "[consentIban]",
-						"currency": "[consentCurrency]"
+						"iban": "[CONSENT_IBAN]",
+						"currency": "[CONSENT_CURRENCY]"
 					}
 				],
 				"transactions": [
 					{
-						"iban": "[consentIban]",
-						"currency": "[consentCurrency]"
+						"iban": "[CONSENT_IBAN]",
+						"currency": "[CONSENT_CURRENCY]"
 					}
 				]
 			},
-			"recurringIndicator": [consentRecurringIndicator],
+			"recurringIndicator": [CONSENT_RECURRING_INDICATOR],
 			"validUntil": "[yyyy-MM-dd]",
-			"frequencyPerDay": [consentFrequencyPerDay],
-			"combinedServiceIndicator": [consentCombinedServiceIndicator]
+			"frequencyPerDay": [CONSENT_FREQUENCY_PER_DAY],
+			"combinedServiceIndicator": [CONSENT_COMBINED_SERVICE_INDICATOR]
 		}'
 
 ### Headers
@@ -86,23 +92,22 @@ The `balances` and `transactions` consent request must contain a subset of the a
 
     {
         "consentStatus": "received",
-        "consentId": "[CONSENTID]",
+        "consentId": "[CONSENT_ID]",
         "scaMethods": [
             {
                 "authenticationType": "PUSH_OTP",
-                "authenticationMethodId": "Mobilt BankID",
-                "name": "Mobilt BankID"
+                "authenticationMethodId": "[AUTHENTICATION_METHOD_ID]"
             }
         ],
         "_links": {
             "status": {
-                "href": "/psd2/consent/v1/consents/[CONSENTID]/status"
+                "href": "/psd2/consent/v1/consents/[CONSENT_ID]/status"
             },
-            "startAuthorizationWithTransactionAuthorization": {
-                "href": "/psd2/consent/v1/consents/[CONSENTID]/authorisations"
+            "startAuthorisationWithTransactionAuthorisation": {
+                "href": "/psd2/consent/v1/consents/[CONSENT_ID]/authorisations"
             },
             "self": {
-                "href": "/psd2/consent/v1/consents/[CONSENTID]"
+                "href": "/psd2/consent/v1/consents/[CONSENT_ID]"
             }
         }
     }
@@ -117,9 +122,9 @@ The `balances` and `transactions` consent request must contain a subset of the a
 Once you have a consent you can use the id for that consent to get information about the consent.
 
     curl -X GET
-		[API_HOST]/psd2/consent/v1/consents/[CONSENTID]
+		[API_HOST]/psd2/consent/v1/consents/[CONSENT_ID]
 		-H 'Authorization: Bearer [ACCESS_TOKEN]'
-		-H 'PSU-IP-Address: [PSU-IP-Address]'
+		-H 'PSU-IP-Address: [PSU_IP_Address]'
 		-H 'X-BicFi: [BICFI]'
 		-H 'X-Request-ID: [GUID]'
 
@@ -129,29 +134,29 @@ See Create consent.
 
 ### Path parameter
 
-`CONSENTID`
+- `CONSENT_ID`
 
 ### Response
 
     {
-        "consentId": "[CONSENTID]",
+        "consentId": "[CONSENT_ID]",
         "access": {
             "accounts": [
                 {
-                    "iban": "[consentIban]",
-                    "currency": "[consentCurrency]"
+                    "iban": "[CONSENT_IBAN]",
+                    "currency": "[CONSENT_CURRENCY]"
                 }
             ],
             "balances": [
                 {
-                    "iban": "[consentIban]",
-                    "currency": "[consentCurrency]"
+                    "iban": "[CONSENT_IBAN]",
+                    "currency": "[CONSENT_CURRENCY]"
                 }
             ],
             "transactions": [
                 {
-                    "iban": "[consentIban]",
-                    "currency": "[consentCurrency]"
+                    "iban": "[CONSENT_IBAN]",
+                    "currency": "[CONSENT_CURRENCY]"
                 }
             ]
         },
@@ -164,27 +169,27 @@ See Create consent.
 
 ### Response headers
 
-`X-Request-ID`
+- `X-Request-ID`
 
 ## Delete consent
 
     curl -X DELETE
-		[API_HOST]/psd2/consent/v1/consents/[CONSENTID]
+		[API_HOST]/psd2/consent/v1/consents/[CONSENT_ID]
 		-H 'Authorization: Bearer [ACCESS_TOKEN]'
-		-H 'PSU-IP-Address: [PSU-IP-Address]'
+		-H 'PSU-IP-Address: [PSU_IP_Address]'
 		-H 'X-BicFi: [BICFI]'
 		-H 'X-Request-ID: [GUID]'
 
 ### Response headers
 
-`X-Request-ID`
+- `X-Request-ID`
 
 ## Consent status request
 
     curl -X GET
-		[API_HOST]/psd2/consent/v1/consents/[CONSENTID]/status
+		[API_HOST]/psd2/consent/v1/consents/[CONSENT_ID]/status
 		-H 'Authorization: Bearer [ACCESS_TOKEN]'
-		-H 'PSU-IP-Address: [PSU-IP-Address]'
+		-H 'PSU-IP-Address: [PSU_IP_Address]'
 		-H 'X-BicFi: [BICFI]'
 		-H 'X-Request-ID: [GUID]'
 
@@ -194,7 +199,7 @@ See Create consent.
 
 ### Path parameter
 
-`CONSENTID`
+- `CONSENT_ID`
 
 ### Response
 
@@ -206,14 +211,14 @@ See possible values for status further down.
 
 ### Response headers
 
-`X-Request-ID`
+- `X-Request-ID`
 
 ## Start the authorisation process for a consent
 
     curl -X POST
-        [API_HOST]/psd2/consent/v1/consents/[CONSENTID]/authorisations
+        [API_HOST]/psd2/consent/v1/consents/[CONSENT_ID]/authorisations
         -H 'Authorization: Bearer [ACCESS_TOKEN]'
-        -H 'PSU-IP-Address: [PSU-IP-Address]'
+        -H 'PSU-IP-Address: [PSU_IP_Address]'
         -H 'X-BicFi: [BICFI]'
         -H 'X-Request-ID: [GUID]'
 
@@ -225,25 +230,24 @@ See Create consent.
 
 ### Path parameter
 
-`CONSENTID`
+- `CONSENT_ID`
 
 ### Response
 
     {
-        "authorisationId": "[CONSENTAUTHID]",
+        "authorisationId": "[CONSENT_AUTH_ID]",
         "scaMethods": [
             {
                 "authenticationType": "PUSH_OTP",
-                "authenticationMethodId": "Mobilt BankID",
-                "name": "Mobilt BankID"
+                "authenticationMethodId": "[AUTHENTICATION_METHOD_ID]"
             }
         ],
         "_links": {
             "scaStatus": {
-                "href": "/psd2/consent/v1/consents/[CONSENTID]/authorisations/[CONSENTAUTHID]"
+                "href": "/psd2/consent/v1/consents/[CONSENT_ID]/authorisations/[CONSENT_AUTH_ID]"
             },
             "selectAuthenticationMethod": {
-                "href": "/psd2/consent/v1/consents/[CONSENTID]/authorisations/[CONSENTAUTHID]"
+                "href": "/psd2/consent/v1/consents/[CONSENT_ID]/authorisations/[CONSENT_AUTH_ID]"
             }
         },
         "scaStatus": "started"
@@ -257,9 +261,9 @@ See Create consent.
 ## Get consent authorisation sub-resource request
 
     curl -X GET
-        [API_HOST]/psd2/consent/v1/consents/[CONSENTID]/authorisations
+        [API_HOST]/psd2/consent/v1/consents/[CONSENT_ID]/authorisations
         -H 'Authorization: Bearer [ACCESS_TOKEN]'
-        -H 'PSU-IP-Address: [PSU-IP-Address]'
+        -H 'PSU-IP-Address: [PSU_IP_Address]'
         -H 'X-BicFi: [BICFI]'
         -H 'X-Request-ID: [GUID]'
 
@@ -269,26 +273,26 @@ See Create consent.
 
 ### Path parameter
 
-`CONSENTID`
+- `CONSENT_ID`
 
 ### Response
 
     {
         "authorisationIds": [
-            "[CONSENTAUTHID]"
+            "[CONSENT_AUTH_ID]"
         ]
     }
 
 ### Response headers
 
-`X-Request-ID`
+- `X-Request-ID`
 
 ## Read the SCA status of the consent authorisation
 
     curl -X GET
-        [API_HOST]/psd2/consent/v1/consents/[CONSENTID]/authorisations/[CONSENTAUTHID]
+        [API_HOST]/psd2/consent/v1/consents/[CONSENT_ID]/authorisations/[CONSENT_AUTH_ID]
         -H 'Authorization: Bearer [ACCESS_TOKEN]'
-        -H 'PSU-IP-Address: [PSU-IP-Address]'
+        -H 'PSU-IP-Address: [PSU_IP_Address]'
         -H 'X-BicFi: [BICFI]'
         -H 'X-Request-ID: [GUID]'
 
@@ -298,8 +302,8 @@ See Create consent.
 
 ### Path parameter
 
-- `CONSENTID`
-- `CONSENTAUTHID`
+- `CONSENT_ID`
+- `CONSENT_AUTH_ID`
 
 ### Response
 
@@ -314,13 +318,13 @@ See Create consent.
 ## Update PSU data for consents
 
     curl -X PUT
-        [API_HOST]/psd2/consent/v1/consents/[CONSENTID]/authorisations/[CONSENTAUTHID]
+        [API_HOST]/psd2/consent/v1/consents/[CONSENT_ID]/authorisations/[CONSENT_AUTH_ID]
         -H 'Authorization: Bearer [ACCESS_TOKEN]'
-        -H 'PSU-IP-Address: [PSU-IP-Address]'
+        -H 'PSU-IP-Address: [PSU_IP_Address]'
         -H 'X-BicFi: [BICFI]'
         -H 'X-Request-ID: [GUID]'
         -d '{
-            "authenticationMethodId": "[authenticationMethodId]"
+            "authenticationMethodId": "[AUTHENTICATION_METHOD_ID]"
         }'
 
 ### Headers
@@ -329,27 +333,27 @@ See Create consent.
 
 ### Path parameter
 
-- `CONSENTID`
-- `CONSENTAUTHID`
+- `CONSENT_ID`
+- `CONSENT_AUTH_ID`
 
 ### Response headers
 
-`X-Request-ID`
+- `ASPSP-SCA-Approach` see below for different values.
+- `X-Request-ID`
 
 ### Response
 
     {
         "chosenScaMethod": {
             "authenticationType": "PUSH_OTP",
-            "authenticationMethodId": "Mobilt BankID",
-            "name": "Mobilt BankID"
+            "authenticationMethodId": "[AUTHENTICATION_METHOD_ID]"
         },
         "_links": {
             "scaStatus": {
-                "href": "/psd2/consent/v1/consents/[CONSENTID]/authorisations/[CONSENTAUTHID]"
+                "href": "/psd2/consent/v1/consents/[CONSENT_ID]/authorisations/[CONSENT_AUTH_ID]"
             },
             "scaOAuth": {
-                "href": "[AUTH_HOST]/connect/authorize?client_id=[CLIENTID]&scope=accountinformation&response_type=code&redirect_uri=[TPP_REDIRECT_URI]&state=[TPP_STATE]&acr_values=idp:ESSESESS%20consentId:[CONSENTID]%20consentAuthorisationId:[CONSENTAUTHID]"
+                "href": "[AUTH_HOST]/connect/authorize?client_id=[CLIENT_ID]&scope=accountinformation&response_type=code&redirect_uri=[TPP_REDIRECT_URI]&state=[TPP_STATE]&acr_values=idp:[BICFI]%20consentId:[CONSENT_ID]%20consentAuthorisationId:[CONSENT_AUTH_ID]"
             }
         },
         "psuMessage": "Please confirm with your bank app",
@@ -363,7 +367,8 @@ If the ASPSP uses OAuth:
 - Replace all the bracketed fields with real values. In your code you will have to replace only the two TPP values.
     - `TPP_REDIRECT_URI` should be the URL to redirect to after auth is completed.
     - `TPP_STATE` can be anything the TPP wants.
-- Run it in a browser. In this case you will get to a page at the SEB sandbox. It may differ for different banks.
+    - `BICIFI`
+- Run it in a browser. In this case you will get to a page at the ESSESESS sandbox. It may differ for different banks.
 - In the page you get to you can use one of the following fake personal numbers:
     - 9311219639
     - 9311219589
@@ -379,9 +384,9 @@ Call the OAuth token endpoint to finalize consent flow.
     curl -X POST
         [AUTH_HOST]/connect/token
         -H 'Content-Type: application/x-www-form-urlencoded'
-        -H 'X-ConsentAuthorisationId: [CONSENTAUTHID]'
-        -H 'X-ConsentId: [CONSENTID]'
-        -d 'client_id=[CLIENTID]&client_secret=[CLIENTSECRET]&code=[CODE]&redirect_uri=[TPP_REDIRECT_URI]&grant_type=authorization_code'
+        -H 'X-ConsentAuthorisationId: [CONSENT_AUTH_ID]'
+        -H 'X-ConsentId: [CONSENT_ID]'
+        -d 'client_id=[CLIENT_ID]&client_secret=[CLIENT_SECRET]&code=[CODE]&redirect_uri=[TPP_REDIRECT_URI]&grant_type=authorization_code'
 
 At this point you are ready to call the account service. Read more in the [account service tutorial](/docs/tutorials/accounts).
 
@@ -390,7 +395,7 @@ At this point you are ready to call the account service. Read more in the [accou
 
 ### Consent status
 
-Can be one of the following values:
+`consentStatus` for a consent can be one of the following values:
 
 - received
 - rejected
@@ -401,7 +406,7 @@ Can be one of the following values:
 
 ### Consent authorisation status
 
-Can be one of the following values:
+`scaStatus` for a consent authorisation can be one of the following values:
 
 - received
 - psuIdentified
@@ -420,3 +425,12 @@ Can be one of the following values. See the NextGen specs for more details.
 - EMBEDDED
 - DECOUPLED
 - REDIRECT
+
+### Authentication type
+
+`authenticationType` for a consent authorisation can be one of the following values:
+
+- SMS_OTP
+- CHIP_OTP
+- PHOTO_OTP
+- PUSH_OTP
