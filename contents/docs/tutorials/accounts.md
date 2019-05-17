@@ -313,24 +313,24 @@ See Read account list.
 
 ## Schemas
 
-### Account status (status)
+### Account status
 
-Can be one of the following values:
+`status` for an account can be one of the following values:
 
 - enabled
 - deleted
 - blocked
 
-### Account usage (usage)
+### Account usage
 
-Can be one of the following values:
+`usage` for an acounnt Can be one of the following values:
 
 - PRIV
 - ORGA
 
-### Balance type (balanceType)
+### Balance type
 
-Can be one of the following values:
+`balanceType` can be one of the following values:
 
 - closingBooked
 - expected
@@ -341,6 +341,6 @@ Can be one of the following values:
 - forwardAvailable
 - nonInvoiced
 
-### Purpose code (purposeCode)
+### Purpose code
 
-Values from ISO 20022 External Code List ExternalCodeSets_1Q2018 June 2018.
+`purposeCode` values for transactions can be found in the ISO 20022 External Code List ExternalCodeSets_1Q2018 June 2018.
