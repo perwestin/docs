@@ -36,7 +36,7 @@ class Footer extends Component {
                         <div className='disclaimer footer-box'>
                             <h2>Disclaimer</h2>
                             <p>
-                                As PSD2 is still in transition for banks to adhere to the RTS, this sandbox version is using banks beta APIs.
+                                As <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32015L2366" target="_blank">PSD2</a> is still in transition for banks to adhere to the <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32018R0389" target="_blank">RTS</a>, this sandbox version is using banks beta APIs.
                             </p>
                             <a className="social-icon linkedin" href="https://www.linkedin.com/company/openpayments" target="_blank"></a>
                             <a className="social-icon twitter" href="http://twitter.com/openpaymentseu" target="_blank"></a>
