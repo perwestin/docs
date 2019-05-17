@@ -63,22 +63,22 @@ This post will return a JSON object that looks like this:
 ### Headers
 
 `PSU-IP-Address` is the IP address of the end user.
-`X-BicFi` the BicFi for the user's ASPSP. Find it in [the ASPSP API](/docs/tutorials/aspsp#get-aspsps-for-a-countries-andor-cities).
+`X-BicFi` the BICFI for the user's ASPSP. Find it in [the ASPSP API](/docs/tutorials/aspsp#get-aspsps-for-a-countries-andor-cities).
 `X-Request-ID` used to verify that the response matches the request.
 
 ### Body description
 
 `access` is a list of data items that consent need to be acquired for. There are three possible things to get consent from:
 
-- `accounts`: this is a consent to get access to an account list with some account details needed.
-- `balances`: this is a consent to get access to balances for accounts.
-- `transactions` : this is a consent to see all the transactions for accounts.
+- `accounts` this is a consent to get access to an account list with some account details needed.
+- `balances` this is a consent to get access to balances for accounts.
+- `transactions` this is a consent to see all the transactions for accounts.
 
 Each consent request contains `iban` and `currency` (optional). Each consent request can be a list of account ids (ibans).
 The `balances` and `transactions` consent request must contain a subset of the accounts listed in `accounts`.
 
 `recurringIndicator` is a boolean that indicates if the consent can be used multiple times or not.
-`validUntil` is a date on the format `yyyy-MM-dd`
+`validUntil` is a date in `yyyy-MM-dd` format.
 `frequencyPerDay` is a number indicating the number of usages per day for this consent.
 `combinedServiceIndicator` if true this indicates that the session will be used to initate a payment also. It has no practical meaning at this time.
 
@@ -109,7 +109,7 @@ The `balances` and `transactions` consent request must contain a subset of the a
 
 ### Response headers
 
-`ASPSP-SCA-Approach` - see below for different values.
+`ASPSP-SCA-Approach` see below for different values.
 `X-Request-ID`
 
 ## Get consent
