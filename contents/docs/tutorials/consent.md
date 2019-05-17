@@ -217,6 +217,14 @@ See possible values for status further down.
         -H 'X-BicFi: [BICFI]'
         -H 'X-Request-ID: [GUID]'
 
+### Headers
+
+See Create consent.
+
+### Path parameter
+
+`CONSENTID`
+
 ### Response
 
     {
@@ -253,6 +261,14 @@ See possible values for status further down.
         -H 'X-BicFi: [BICFI]'
         -H 'X-Request-ID: [GUID]'
 
+### Headers
+
+See Create consent.
+
+### Path parameter
+
+`CONSENTID`
+
 ### Response
 
     {
@@ -273,6 +289,15 @@ See possible values for status further down.
         -H 'PSU-IP-Address: [PSU-IP-Address]'
         -H 'X-BicFi: [BICFI]'
         -H 'X-Request-ID: [GUID]'
+
+### Headers
+
+See Create consent.
+
+### Path parameter
+
+`CONSENTID`
+`CONSENTAUTHID`
 
 ### Response
 
@@ -295,6 +320,56 @@ See possible values for status further down.
         -d '{
             "authenticationMethodId": "[authenticationMethodId]"
         }'
+
+### Headers
+
+See Create consent.
+
+### Path parameter
+
+`CONSENTID`
+`CONSENTAUTHID`
+
+### Response headers
+
+`X-Request-ID`
+
+### Response
+
+    {
+        "chosenScaMethod": {
+            "authenticationType": "PUSH_OTP",
+            "authenticationMethodId": "Mobilt BankID",
+            "name": "Mobilt BankID"
+        },
+        "_links": {
+            "scaStatus": {
+                "href": "/psd2/consent/v1/consents/[CONSENTID]/authorisations/[CONSENTAUTHID]"
+            },
+            "scaOAuth": {
+                "href": "[AUTH_HOST]/connect/authorize?client_id=[CLIENTID]&scope=accountinformation&response_type=code&redirect_uri=[TPP_REDIRECT_URI]&state=[TPP_STATE]&acr_values=idp:ESSESESS%20consentId:[CONSENTID]%20consentAuthorisationId:[CONSENTAUTHID]"
+            }
+        },
+        "psuMessage": "Please confirm with your bank app",
+        "scaStatus": "scaMethodSelected"
+    }
+
+### Test procedure
+
+If the ASPSP uses OAuth:
+- The above endpoint returns an OAuth authorize URL in the `scoOAuth` field. 
+- Replace all the bracketed fields with real values. In your code you will have to replace only the two TPP values.
+    - TPP_REDIRECT_URI should be the URL to redirect to after auth is completed.
+    - TPP_STATE can be anything the TPP wants.
+- Run it in a browser. In this case you will get to a page at the SEB sandbox. It may differ for different banks.
+- In the page you get to you can use one of the following fake personal numbers:
+    - 9311219639
+    - 9311219589
+    - 8811215477
+    - 8811212862
+    - 8311211356
+- When you submit the data you will be redirected to the [TPP_REDIRECT_URI]
+- On this URI a `code` param will be added. Use this in the subsequent call when getting the account information token. 
 
 
 ## Schemas
