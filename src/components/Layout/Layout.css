@@ -40,7 +40,10 @@ template {
 }
 a {
   background-color: transparent;
+  /* color:#f8b83f; */
+  color:#000;
   -webkit-text-decoration-skip: objects;
+  text-decoration: none;
 }
 a:active,
 a:hover {
@@ -603,6 +606,9 @@ pre tt:after {
 .header .gatsby-image-wrapper{
   margin:1em;
 }
+.header a {
+  color:#f8b83f;
+}
 
 .btn{
   margin:0 .5em;
@@ -669,7 +675,34 @@ pre tt:after {
 #swagger {
   margin-top:5%;
 }
+.swagger-ui {
+  padding: .2em 0 0 0;
+}
 
+.register {
+  float:right;
+  margin:2em;
+}
+.main-content{
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 2px;
+    margin-top: 7em;
+}
+.main-content > div:first-child {
+  margin-top:7em !important;
+}
+
+.blog-post-container a{
+  font-weight: bold;
+}
+/* .sidebar-left, .sidebar-left * {
+  background-color:#1d2937 !important;
+  color:#f8b83f !important;
+} */
+
+body {
+  background-color: #dce0e414;
+}
 /*stuff we need*/
 .ant-anchor {
   -webkit-box-sizing: border-box;
@@ -688,9 +721,11 @@ pre tt:after {
 }
 .ant-anchor-wrapper {
   margin-left: -4px;
-  padding-left: 4px;
+  /* padding-left: 4px; */
   overflow: auto;
   background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
 }
 .ant-anchor-ink {
   position: absolute;
@@ -704,7 +739,7 @@ pre tt:after {
   width: 2px;
   height: 100%;
   margin: 0 auto;
-  background-color: #e8e8e8;
+  background-color: #f8b83f;
   content: ' ';
 }
 .ant-anchor-ink-ball {
@@ -714,7 +749,7 @@ pre tt:after {
   width: 8px;
   height: 8px;
   background-color: #fff;
-  border: 2px solid #1890ff;
+  border: 2px solid #f8b83f;
   border-radius: 8px;
   -webkit-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
@@ -747,7 +782,7 @@ pre tt:after {
   margin-bottom: 0;
 }
 .ant-anchor-link-active > .ant-anchor-link-title {
-  color: #1890ff;
+  color: #f8b83f;
 }
 .ant-anchor-link .ant-anchor-link {
   padding-top: 5px;
@@ -1109,9 +1144,10 @@ ant-card {
 .ant-menu-item > a {
   display: block;
   color: rgba(0, 0, 0, 0.65);
+  text-decoration: none;
 }
 .ant-menu-item > a:hover {
-  color: #1890ff;
+  color: #f8b83f;
 }
 .ant-menu-item > a::before {
   position: absolute;
@@ -1133,7 +1169,7 @@ ant-card {
 .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open,
 .ant-menu-submenu-active,
 .ant-menu-submenu-title:hover {
-  color: #1890ff;
+  color: #f8b83f;
 }
 .ant-menu-horizontal .ant-menu-item,
 .ant-menu-horizontal .ant-menu-submenu {
@@ -1145,14 +1181,14 @@ ant-card {
   background-color: transparent;
 }
 .ant-menu-item-selected {
-  color: #1890ff;
+  color: #1d2937;
 }
 .ant-menu-item-selected > a,
 .ant-menu-item-selected > a:hover {
-  color: #1890ff;
+  color: #f8b83f;
 }
 .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
-  background-color: #e6f7ff;
+  background-color: #f7d18840;
 }
 .ant-menu-inline,
 .ant-menu-vertical,
@@ -1319,9 +1355,9 @@ ant-card {
 .ant-menu-submenu-vertical-left > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::before,
 .ant-menu-submenu-vertical-right > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::before,
 .ant-menu-submenu-inline > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::before {
-  background: -webkit-gradient(linear, left top, right top, from(#1890ff), to(#1890ff));
-  background: -webkit-linear-gradient(left, #1890ff, #1890ff);
-  background: linear-gradient(to right, #1890ff, #1890ff);
+  background: -webkit-gradient(linear, left top, right top, from(#f8b83f), to(#f8b83f));
+  background: -webkit-linear-gradient(left, #f8b83f, #f8b83f);
+  background: linear-gradient(to right, #f8b83f, #f8b83f);
 }
 .ant-menu-submenu-inline > .ant-menu-submenu-title .ant-menu-submenu-arrow::before {
   -webkit-transform: rotate(-45deg) translateX(2px);
@@ -1418,7 +1454,7 @@ ant-card {
   top: 0;
   right: 0;
   bottom: 0;
-  border-right: 3px solid #1890ff;
+  border-right: 3px solid #f8b83f;
   -webkit-transform: scaleY(0.0001);
       -ms-transform: scaleY(0.0001);
           transform: scaleY(0.0001);
@@ -1551,8 +1587,9 @@ ant-card {
 .ant-menu-root.ant-menu-vertical-left,
 .ant-menu-root.ant-menu-vertical-right,
 .ant-menu-root.ant-menu-inline {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  /* -webkit-box-shadow: none;
+          box-shadow: none; */
+          border-radius:2px;
 }
 .ant-menu-sub.ant-menu-inline {
   padding: 0;

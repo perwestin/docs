@@ -13,7 +13,7 @@ class Container extends Component {
     } = this.props;
 
     return (
-      <div
+      <div className='main-content'
         style={{
           margin: '80px auto 0',
           overflow: !sidebarDocked ? "auto" : "visible",

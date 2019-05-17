@@ -7,7 +7,8 @@ class ResponsiveSidebar extends Component {
   render() {
     const { headerHeight, root } = this.props
     return (
-      <div style={{
+      <div className='sidebar-left' 
+      style={{
         position: "fixed",
         top: headerHeight + 30,
         left: 10,

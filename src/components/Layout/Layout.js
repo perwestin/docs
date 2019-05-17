@@ -21,7 +21,7 @@ const Layout = ({
   // setPostPageOff,
   sidebarRoot,
   onSetSidebarDocked,
-  width = "100%"
+  width = window.location.pathname === '/' ? "100%": "50%"
 }) => (
   <StaticQuery
     query={graphql`
