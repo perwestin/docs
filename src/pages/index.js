@@ -6,7 +6,7 @@ import Img from "gatsby-image"
 
 const IndexPage = ({data}) => {
   return (
-    <Layout>
+    <Layout pathname="/">
       <section id="intro-section" style={{
         background: "url('" + data.file.childImageSharp.fluid.src + "') no-repeat center center",
         backgroundSize: 'cover',

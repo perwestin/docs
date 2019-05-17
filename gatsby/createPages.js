@@ -50,7 +50,7 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
       createPage({
         path: 'api/' + node.name.toLowerCase(),
         component: swaggerTemplate,
-        context: {"spec": node.link}
+        context: {"spec": node.link, "pathname": 'api/' + node.name.toLowerCase()}
       })
     })
   })

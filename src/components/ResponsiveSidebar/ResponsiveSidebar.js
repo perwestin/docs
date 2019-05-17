@@ -5,7 +5,7 @@ import SidebarContents from "../SidebarContents";
 
 class ResponsiveSidebar extends Component {
   render() {
-    const { headerHeight, root } = this.props
+    const { headerHeight, root, pathname } = this.props
     return (
       <div className='sidebar-left' 
       style={{
@@ -23,7 +23,7 @@ class ResponsiveSidebar extends Component {
           top:0,
           bottom:0
         }}>
-          <SidebarContents root={root}/>
+          <SidebarContents root={root} pathname={pathname}/>
         </div>
       </div>
     )
