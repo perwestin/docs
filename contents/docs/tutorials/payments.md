@@ -27,7 +27,7 @@ This post will return a JSON object that looks like this:
 ## Payment initiation request
 
     curl -X POST
-        https://api.sandbox.openbankingplatform.com/psd2/paymentinitiation/v1/payments/[PAYMENT_PRODUCT]
+        [API_HOST]/psd2/paymentinitiation/v1/payments/[PAYMENT_PRODUCT]
         -H 'Authorization: Bearer [ACCESS_TOKEN]'
         -H 'Content-Type: application/json'
         -H 'PSU-IP-Address: [PSU_IP_ADDRESS]'
@@ -69,23 +69,162 @@ This post will return a JSON object that looks like this:
 
 The [ASPSP details endpoint](/docs/tutorials/aspsp#get-aspsp) will tell you what payment products that are availalbe for that ASPSP.
 
+### Response
+
+    {
+        "transactionStatus": "[TRANSACTION_STATUS]",
+        "paymentId": "[PAYMENT_ID]",
+        "_links": {
+            "startAuthorisationWithTransactionAuthorisation": {
+                "href": "/psd2/paymentinitiation/v1/payments/[PAYMENT_PRODUCT]]/[PAYMENT_ID]/authorisations"
+            },
+            "self": {
+                "href": "/psd2/paymentinitiation/v1/payments/[PAYMENT_PRODUCT]]/[PAYMENT_ID]"
+            },
+            "status": {
+                "href": "/psd2/paymentinitiation/v1/payments/[PAYMENT_PRODUCT]]/[PAYMENT_ID]/status"
+            }
+        },
+        "psuMessage": "Please confirm payment [PAYMENT_ID]"
+    }
+
+### Response headers
+
+`X-Request-ID`
+
 
 ## Get payment information
 
+    curl -X GET
+        [API_HOST]/psd2/paymentinitiation/v1/payments/domestic/[PAYMENT_ID]
+        -H 'Authorization: Bearer [ACCESS_TOKEN]'
+        -H 'PSU-IP-Address: [PSU_IP_ADDRESS]'
+        -H 'X-BicFi: [BICFI]'
+        -H 'X-Request-ID: [GUID]'
+
+### Headers
+
+See [Payment initiation request](/docs/tutorials/payments#payment-initiation-request)
+
+### Path parameters
+
+`PAYMENT_ID` that was returned from the initiation request.
+
+### Response
+
+    {
+        "creditorAgent": "[BICFI]",
+        "remittanceInformationUnstructured": "[MESSAGE]",
+        "transactionStatus": "[TRANSACTION_STATUS]",
+        "creditorAccount": {
+            "iban": "[CREDITOR_IBAN]",
+            "currency": "SEK"
+        },
+        "creditorName": "Enterprise Inc",
+        "debtorAccount": {
+            "iban": "[DEBTOR_IBAN]",
+            "currency": "SEK"
+        },
+        "instructedAmount": {
+            "currency": "SEK",
+            "amount": "142.66"
+        }
+    }
+
+### Response headers
+
+`X-Request-ID`
+
+
 ## Payment cancellation request
+
+Not implemented yet.
+
 
 ## Payment initiation status request
 
-## Start the authorization process for a payment initiation
+    curl -X GET
+        [API_HOST]/psd2/paymentinitiation/v1/payments/domestic/[PAYMENT_ID]/status
+        -H 'Authorization: Bearer [ACCESS_TOKEN]'
+        -H 'PSU-IP-Address: [PSU_IP_ADDRESS]'
+        -H 'X-BicFi: [BICFI]'
+        -H 'X-Request-ID: [GUID]'
+
+### Headers
+
+See [Payment initiation request](/docs/tutorials/payments#payment-initiation-request)
+
+### Path parameters
+
+`PAYMENT_ID` that was returned from the initiation request.
+
+### Response
+
+    {
+        "transactionStatus": "ACTC"
+    }
+
+### Response headers
+
+`X-Request-ID`
+
+
+## Start the authorisation process for a payment initiation
+
+    curl -X POST
+        [API_HOST]/psd2/paymentinitiation/v1/payments/domestic/[PAYMENT_ID]/authorisations
+        -H 'Authorization: Bearer [ACCESS_TOKEN]'
+        -H 'PSU-IP-Address: [PSU_IP_ADDRESS]'
+        -H 'X-BicFi: [BICFI]'
+        -H 'X-Request-ID: [GUID]'
+        -H 'Content-Type: application/json'
+
+Note that this call does not need a body.
+
+### Headers
+
+See [Payment initiation request](/docs/tutorials/payments#payment-initiation-request)
+
+### Path parameters
+
+`PAYMENT_ID` that was returned from the initiation request.
+
+### Response
+
+    {
+        "authorisationId": "[PAYMENT_AUTH_ID]",
+        "scaStatus": "received",
+        "scaMethods": [
+            {
+                "authenticationType": "PUSH_OTP",
+                "authenticationMethodId": "Mobilt BankID",
+                "name": "Mobilt BankID"
+            }
+        ],
+        "_links": {
+            "authoriseTransaction": {
+                "href": "/psd2/paymentinitiation/v1/payments/domestic/[PAYMENT_ID]/authorisations/[PAYMENT_AUTH_ID]"
+            }
+        }
+    }
+
+### Response headers
+
+- `ASPSP-SCA-Approach` - see below for different values.
+- `X-Request-ID`
+
+
+## Get payment initiation authorisation sub-resources request
+
 
 ## Read the SCA status of the payment initiation
 
+
 ## Update PSU data for payment initiation
 
-## Start the authorization process for the cancellation of the addressed payment
 
-## Will deliver an array of resource identifications to all generated cancellation authorization sub-resources
+## Schemas
 
-## Read the SCA status of gthe payment cancellation's authorization
+### Transaction status
 
-## Update PSU data for payment initiation cancellation
+Read more about the potential values in the NextGen specification.

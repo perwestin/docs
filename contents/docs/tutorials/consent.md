@@ -217,6 +217,8 @@ See possible values for status further down.
         -H 'X-BicFi: [BICFI]'
         -H 'X-Request-ID: [GUID]'
 
+Note that this call does not need a body.
+
 ### Headers
 
 See Create consent.
