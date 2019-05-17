@@ -112,7 +112,7 @@ The `balances` and `transactions` consent request must contain a subset of the a
 `ASPSP-SCA-Approach` see below for different values.
 `X-Request-ID`
 
-## Get consent
+## Get consent request
 
 Once you have a consent you can use the id for that consent to get information about the consent.
 
@@ -179,7 +179,7 @@ See Create consent.
 
 `X-Request-ID`
 
-## Get consent status
+## Consent status request
 
     curl -X GET
 		[API_HOST]/psd2/consent/v1/consents/[CONSENTID]/status
@@ -208,7 +208,7 @@ See possible values for status further down.
 
 `X-Request-ID`
 
-## Create consent authorisation
+## Start the authorisation process for a consent
 
     curl -X POST
         [API_HOST]/psd2/consent/v1/consents/[CONSENTID]/authorisations
@@ -252,7 +252,7 @@ See Create consent.
 `ASPSP-SCA-Approach` - see below for different values.
 `X-Request-ID`
 
-## Get consent authorisations
+## Get consent authorisation sub-resource request
 
     curl -X GET
         [API_HOST]/psd2/consent/v1/consents/[CONSENTID]/authorisations
@@ -281,7 +281,7 @@ See Create consent.
 
 `X-Request-ID`
 
-## Get consent authorisation status
+## Read the SCA status of the consent authorisation
 
     curl -X GET
         [API_HOST]/psd2/consent/v1/consents/[CONSENTID]/authorisations/[CONSENTAUTHID]
@@ -309,7 +309,7 @@ See Create consent.
 
 `X-Request-ID`
 
-## Update consent authorisation
+## Update PSU data for consents
 
     curl -X PUT
         [API_HOST]/psd2/consent/v1/consents/[CONSENTID]/authorisations/[CONSENTAUTHID]
@@ -359,8 +359,8 @@ See Create consent.
 If the ASPSP uses OAuth:
 - The above endpoint returns an OAuth authorize URL in the `scoOAuth` field. 
 - Replace all the bracketed fields with real values. In your code you will have to replace only the two TPP values.
-    - TPP_REDIRECT_URI should be the URL to redirect to after auth is completed.
-    - TPP_STATE can be anything the TPP wants.
+    - `TPP_REDIRECT_URI` should be the URL to redirect to after auth is completed.
+    - `TPP_STATE` can be anything the TPP wants.
 - Run it in a browser. In this case you will get to a page at the SEB sandbox. It may differ for different banks.
 - In the page you get to you can use one of the following fake personal numbers:
     - 9311219639
@@ -368,8 +368,20 @@ If the ASPSP uses OAuth:
     - 8811215477
     - 8811212862
     - 8311211356
-- When you submit the data you will be redirected to the [TPP_REDIRECT_URI]
-- On this URI a `code` param will be added. Use this in the subsequent call when getting the account information token. 
+- When you submit the data you will be redirected to the `[TPP_REDIRECT_URI]`
+- On this URI a `code` param will be added. 
+- Use this `code` in the subsequent call when getting the account information token.
+
+Call the OAuth token endpoint to finalize consent flow.
+
+    curl -X POST
+        [AUTH_HOST]/connect/token
+        -H 'Content-Type: application/x-www-form-urlencoded'
+        -H 'X-ConsentAuthorisationId: [CONSENTAUTHID]'
+        -H 'X-ConsentId: [CONSENTID]'
+        -d 'client_id=[CLIENTID]&client_secret=[CLIENTSECRET]&code=[CODE]&redirect_uri=[TPP_REDIRECT_URI]&grant_type=authorization_code'
+
+At this point you are ready to call the account service. Read more in the [account service tutorial](/docs/tutorials/accounts).
 
 
 ## Schemas
