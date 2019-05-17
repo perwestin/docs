@@ -6,17 +6,17 @@
     },
     {
       "name": "Accounts",
-      "link": "https://api.swaggerhub.com/apis/openpayments/AccountInformationService/v1",
+      "link": "https://api.swaggerhub.com/apis/openpayments/AccountInformationService/1.3.3",
       "type": "api"
     },
     {
       "name": "Consent",
-      "link": "https://api.swaggerhub.com/apis/openpayments/ConsentService/v1",
+      "link": "https://api.swaggerhub.com/apis/openpayments/ConsentService/1.3.3",
       "type": "api"
     },
     {
       "name": "Payment Initiation",
-      "link": "https://api.swaggerhub.com/apis/openpayments/PaymentInitiationService/v1",
+      "link": "https://api.swaggerhub.com/apis/openpayments/PaymentInitiationService/1.3.3",
       "type": "api"
     }
 ]
