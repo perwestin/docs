@@ -62,9 +62,9 @@ This post will return a JSON object that looks like this:
 
 ### Headers
 
-`PSU-IP-Address` is the IP address of the end user.
-`X-BicFi` the BICFI for the user's ASPSP. Find it in [the ASPSP API](/docs/tutorials/aspsp#get-aspsps-for-a-countries-andor-cities).
-`X-Request-ID` used to verify that the response matches the request.
+- `PSU-IP-Address` is the IP address of the end user.
+- `X-BicFi` the BICFI for the user's ASPSP. Find it in [the ASPSP API](/docs/tutorials/aspsp#get-aspsps-for-a-countries-andor-cities).
+- `X-Request-ID` used to verify that the response matches the request.
 
 ### Body description
 
@@ -109,8 +109,8 @@ The `balances` and `transactions` consent request must contain a subset of the a
 
 ### Response headers
 
-`ASPSP-SCA-Approach` see below for different values.
-`X-Request-ID`
+- `ASPSP-SCA-Approach` see below for different values.
+- `X-Request-ID`
 
 ## Get consent request
 
@@ -249,8 +249,8 @@ See Create consent.
 
 ### Response headers
 
-`ASPSP-SCA-Approach` - see below for different values.
-`X-Request-ID`
+- `ASPSP-SCA-Approach` - see below for different values.
+- `X-Request-ID`
 
 ## Get consent authorisation sub-resource request
 
@@ -296,8 +296,8 @@ See Create consent.
 
 ### Path parameter
 
-`CONSENTID`
-`CONSENTAUTHID`
+- `CONSENTID`
+- `CONSENTAUTHID`
 
 ### Response
 
@@ -327,8 +327,8 @@ See Create consent.
 
 ### Path parameter
 
-`CONSENTID`
-`CONSENTAUTHID`
+- `CONSENTID`
+- `CONSENTAUTHID`
 
 ### Response headers
 

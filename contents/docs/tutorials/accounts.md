@@ -38,10 +38,10 @@ Follow instructions in [the Consent API](/docs/tutorials/accounts-and-consent#cr
 
 ### Headers
 
-`PSU-IP-Address` is the IP address of the end user.
-`X-BicFi` the BICFI for the user's ASPSP. Find it in [the ASPSP API](/docs/tutorials/aspsp#get-aspsps-for-a-countries-andor-cities).
-`X-Request-ID` used to verify that the response matches the request.
-`Consent-ID` identification of the corresponding consent as granted by the PSU.
+- `PSU-IP-Address` is the IP address of the end user.
+- `X-BicFi` the BICFI for the user's ASPSP. Find it in [the ASPSP API](/docs/tutorials/aspsp#get-aspsps-for-a-countries-andor-cities).
+- `X-Request-ID` used to verify that the response matches the request.
+- `Consent-ID` identification of the corresponding consent as granted by the PSU.
 
 ### Response
 
@@ -71,7 +71,7 @@ Follow instructions in [the Consent API](/docs/tutorials/accounts-and-consent#cr
 
 ## Read account details
 
-Use one of the [ACCOUNTID]s to get more information about a speicific account.
+Use one of the [ACCOUNTID]s to get more information about a specific account.
 
 	curl -X GET
 		[API_HOST]/psd2/accountinformation/v1/accounts/[ACCOUNTID]
@@ -148,7 +148,7 @@ See Read account list.
 
 ### Path parameter
 
-`ACCOUNTID` Refers to `resourceId` in the response from [Read account list](#read-account-list).
+`ACCOUNTID` refers to `resourceId` in the response from [Read account list](#read-account-list).
 
 ### Response
 
@@ -177,7 +177,7 @@ See Read account list.
 
 `X-Request-ID`
 
-## Read transaction list of an account
+## Read transaction list
 
 Retreive transactions for a given [ACCOUNTID].
 
@@ -196,13 +196,13 @@ See Read account list.
 
 ### Path parameter
 
-`ACCOUNTID` Refers to `resourceId` in the response from [Read account list](#read-account-list).
+`ACCOUNTID` refers to `resourceId` in the response from [Read account list](#read-account-list).
 
 ### Query parameters
 
-`bookingStatus` booked, pending, both.
-`dateFrom` is a date in `yyyy-MM-dd` format.
-`dateTo` is a date in `yyyy-MM-dd` format. Optional.
+- `bookingStatus` booked, pending, both.
+- `dateFrom` is a date in `yyyy-MM-dd` format.
+- `dateTo` is a date in `yyyy-MM-dd` format. Optional.
 
 ### Response
 
@@ -284,8 +284,8 @@ See Read account list.
 
 ### Path parameter
 
-`ACCOUNTID` Refers to `resourceId` in the response from [Read account list](#read-account-list).
-`TRANSACTIONID` Refers to `transactionId` in the response from [Read transaction list of an account](#read-transaction-list-of-an-account).
+- `ACCOUNTID` refers to `resourceId` in the response from [Read account list](#read-account-list).
+- `TRANSACTIONID` refers to `transactionId` in the response from [Read transaction list of an account](#read-transaction-list-of-an-account).
 
 ### Response
 
