@@ -10,6 +10,11 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+body.first-page {
+
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -20,7 +25,6 @@ body {
   font-family: Open Sans,sans-serif;
   height:100%;
 }
-
 audio,
 canvas,
 progress,
@@ -676,7 +680,7 @@ pre tt:after {
   margin-top:5%;
 }
 .swagger-ui {
-  padding: .2em 0 0 0;
+  padding: .2em 0 .2em    0;
 }
 
 .register {
@@ -686,10 +690,19 @@ pre tt:after {
 .main-content{
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     border-radius: 2px;
+    margin: 80px auto 0px;
     margin-top: 7em;
 }
+.first-page .main-content {
+  margin-top:80px;
+}
+
+.first-page #intro-section {
+  border-bottom: 3px solid #f8b83f;
+}
+
 .main-content > div:first-child {
-  margin-top:7em !important;
+  margin-top:7em;
 }
 
 .blog-post-container a{

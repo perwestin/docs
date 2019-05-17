@@ -36,6 +36,7 @@ const IndexPage = ({data}) => {
           </div>
       </div>
       </section>
+
       {/* <div className="container">
       <img src={data.file.childImageSharp.fluid.src} />
       <h1>Open Payments Europe</h1>

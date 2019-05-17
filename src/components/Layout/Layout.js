@@ -43,6 +43,12 @@ const Layout = ({
       }
     `}
     render={data => {
+      if(window.location.pathname ==='/'){
+        document.body.className = 'first-page'; 
+      }
+      else{
+        document.body.className = '';
+      }
       const allPosts = data.allMarkdownRemark.edges.map(edge => edge.node.fields.slug)
       let onPostPage 
       if (typeof window !== 'undefined') {
