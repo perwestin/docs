@@ -1,9 +1,10 @@
 ---
-title: Getting started with consents
+title: Getting started with Consents
 root: "/docs"
 parents: ["Get Started"]
+prio: 1
 ---
-# Getting started with consents
+# Getting started with Account Consents
 
 Available `AUTH_HOST`s
 - https://auth.sandbox.openbankingplatform.com

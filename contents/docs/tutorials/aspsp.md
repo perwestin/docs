@@ -2,6 +2,7 @@
 title: Getting started with the API and ASPSP
 root: "/docs"
 parents: ["Get Started"]
+prio: 0
 ---
 # Getting started with the API and ASPSP
 

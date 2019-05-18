@@ -1,9 +1,10 @@
 ---
-title: Getting started with accounts
+title: Getting started with AIS
 root: "/docs"
 parents: ["Get Started"]
+prio: 2
 ---
-# Getting started with accounts
+# Getting started with Account Information Services (AIS)
 
 Available `AUTH_HOST`s
 - https://auth.sandbox.openbankingplatform.com

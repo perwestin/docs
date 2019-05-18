@@ -1,7 +1,7 @@
 ---
 title: Glossary
 root: "/docs"
-parents: ["Get Started"]
+parents: ["Introduction"]
 prio: 1
 ---
 

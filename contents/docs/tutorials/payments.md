@@ -1,9 +1,10 @@
 ---
-title: Getting started with payment initiation
+title: Getting started with PIS
 root: "/docs"
 parents: ["Get Started"]
+prio: 3
 ---
-# Getting started with the payment initiation
+# Getting started with Payment Initiation Services (PIS)
 
 Available `AUTH_HOST`s
 - https://auth.sandbox.openbankingplatform.com

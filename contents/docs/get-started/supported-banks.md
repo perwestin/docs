@@ -1,18 +1,16 @@
 ---
 title: Supported banks
 root: "/docs"
-parents: ["Get Started"]
+parents: ["Introduction"]
 prio: 0
 ---
 
 # Supported banks
 
-Here is a list of currently supported banks in the Sandbox environment.
+Here is a list of currently supported banks in the Sandbox environment. <em>(The banks supported has currently been limited due to unsufficient bank functionality, more banks will be enabled again after June 14.)</em>
 
 ## Sweden
 
 - Nordea
 - Handelsbanken
 - SEB
-
-More banks will be added continously.

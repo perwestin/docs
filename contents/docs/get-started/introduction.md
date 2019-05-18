@@ -1,7 +1,7 @@
 ---
 title: Introduction
 root: "/docs"
-parents: ["Get Started"]
+parents: ["Introduction"]
 prio: 0
 ---
 # Get started

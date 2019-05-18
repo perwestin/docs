@@ -17,22 +17,21 @@ const IndexPage = ({data}) => {
           <div align="center" style={{
             paddingTop: '100px'
           }}>
-              <h2 style={{color: 'white'}}>Developer portal</h2>
+              <h2 style={{color: 'white'}}>Preview Sandbox API Portal</h2>
               <h1 style={{color: "white", fontWeight: 'bold'}}>
-                All the docs for Open Payments API
+                Open Payments Platform
               </h1>
               <p className="largerwhitetext">
                 Open Payments Platform is a PSD2 compliant API aggregation platform that offers a single, open and secure point of access
                 to the diverse bank API networks throughout Europe.
               </p>
               <p className="largerwhitetext">
-                Open Payments Platform simplifies integration of third party application providers, e-commerce platforms and B2B systems.
+                Open Payments Platform simplifies integration of third party application providers with a singe, open and secure API.
               </p>
               <br/>
               <Link to="/docs/get-started/introduction">
                 <Button className="btn btn-primary">Get Started</Button>
               </Link>
-              <Button className="btn btn-secondary" href="https://github.com/openpaymentseurope/docs">Fork me over at Github</Button>
           </div>
       </div>
       </section>
