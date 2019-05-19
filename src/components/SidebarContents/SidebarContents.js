@@ -25,7 +25,7 @@ const convertToTree = (markdownData, apiData) => {
         path: "/api/" + oneApi.name.toLowerCase(),
         key: oneApi.name,
         title: oneApi.name,
-        prio: 1,
+        prio: oneApi.prio,
         parents: ["API"]
       })
     })
@@ -66,7 +66,7 @@ const sortTree = tree => {
   tree.sort((a,b)=> {
     if (((a.children && b.children) || (!a.children && !b.children))) {
       if (a.prio === b.prio ) {
-        return a.title > b.title
+        return a.title < b.title
       }
       else return a.prio > b.prio
     } else if (a.children) {
@@ -110,6 +110,7 @@ class SidebarContents extends Component {
                   name
                   link
                   type
+                  prio
                 }
               }
             }      
