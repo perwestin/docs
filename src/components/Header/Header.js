@@ -10,32 +10,16 @@ class Header extends Component {
     this.props.updateHeaderHeight(this.props.size.height)
   }
 
-  setLink() {
-    if (window.location.pathname === '/') {
-      return (
-        <div className='header'>
-          <Logo />
-          <a className = "register" href="/obp.postman_collection.json" target="_blank">Download Postman Collection</a>
-          <a className = "register" href="https://auth.sandbox.openbankingplatform.com/client/register" target="_blank">Register a client</a>
-        </div>)
-    } else {
-
-      return (
-        <div className='header'>
-          <Link to= '/'>
-            <Logo />
-          </Link>
-          <a className = "register" href="/obp.postman_collection.json" target="_blank">Download Postman Collection</a>
-          <a className="register" href="https://auth.sandbox.openbankingplatform.com/client/register" target="_blank">Register a client</a>
-        </div>
-      )
-    }
-  }
-
   render() {
-    // const { siteTitle } = this.props
+    const logo = window.location.pathname === '/' ? <Logo/> : <Link to= '/'><Logo /></Link>
 
-    return this.setLink()
+    return (
+      <div className='header'>
+        {logo}
+        <a className = "register" href="/obp.postman_collection.json" target="_blank">Download Postman Collection</a>
+        <a className="register" href="https://auth.sandbox.openbankingplatform.com/client/register" target="_blank">Register a client</a>
+      </div>
+    )
   }
 }
 
