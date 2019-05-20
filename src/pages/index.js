@@ -26,7 +26,7 @@ const IndexPage = ({data}) => {
                 to the diverse bank API networks throughout Europe.
               </p>
               <p className="largerwhitetext">
-                Open Payments Platform simplifies integration of third party application providers with a singe, open and secure API.
+                Open Payments Platform simplifies integration of third party application providers with a single, open and secure API.
               </p>
               <br/>
               <Link to="/docs/get-started/introduction">
