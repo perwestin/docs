@@ -6,10 +6,10 @@ prio: 1
 ---
 # Getting started with Account Consents
 
-Available `AUTH_HOST`s
+Available `AUTH_HOST` values
 - https://auth.sandbox.openbankingplatform.com
 
-Available `API_HOST`s
+Available `API_HOST` values
 - https://api.sandbox.openbankingplatform.com
 
 ## Acquire an access token for Account Information

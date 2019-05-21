@@ -9,10 +9,10 @@ prio: 0
 Open Payments Platform uses OAuth2 (specifically OIDC) for authentication. In the following sections, we have provided step
 by step instructions on how you will interact with the platform.
 
-Available `AUTH_HOST`s
+Available `AUTH_HOST` values
 - https://auth.sandbox.openbankingplatform.com
 
-Available `API_HOST`s
+Available `API_HOST` values
 - https://api.sandbox.openbankingplatform.com
 
 ## Register a client

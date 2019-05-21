@@ -6,10 +6,10 @@ prio: 3
 ---
 # Getting started with Payment Initiation Services (PIS)
 
-Available `AUTH_HOST`s
+Available `AUTH_HOST` values
 - https://auth.sandbox.openbankingplatform.com
 
-Available `API_HOST`s
+Available `API_HOST` values
 - https://api.sandbox.openbankingplatform.com
 
 ## Introduction
