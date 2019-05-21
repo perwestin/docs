@@ -7,9 +7,7 @@ import './Layout.css'
 import ResponsiveSidebar from '../ResponsiveSidebar';
 import Container from '../Container';
 import ResponsiveAnchor from '../ResponsiveAnchor';
-import ResponsiveTopBar from '../ResponsiveTopBar';
 import Footer from '../Footer';
-// import { setPostPageOn, setPostPageOff } from '../../actions/layout'
 import { connect } from 'react-redux'
 import { pathPrefix } from '../../../gatsby-config'
 import MediaQuery from "react-responsive";
@@ -84,7 +82,6 @@ const Layout = ({
               <html lang="en" />
             </Helmet>
             <Header siteTitle={data.site.siteMetadata.title} />
-            {/* {(matches && window.location.pathname !== '/') ? <ResponsiveTopBar root={sidebarRoot}/> : null} */}
             {(!matches && pathname !== '/') ? <><ResponsiveSidebar root={sidebarRoot} pathname={pathname}/> <ResponsiveAnchor /> </> : null }
             <Container sidebarDocked={!matches} onPostPage={onPostPage} width={pathname === '/' ? "100%" : "50%"}>
               {children}
