@@ -718,6 +718,64 @@ pre tt:after {
   color:#f8b83f !important;
 } */
 
+/*
+cookieConsent css starts here
+*/
+
+#cookieConsent {
+  z-index: 1;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: rgba(249,184,64,.9);
+  color: #1d2937;
+}
+
+#cookieConsent a {
+  color: #1d2937;
+}
+
+.alert-info {
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+}
+
+.alert {
+  position: relative;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+
+.fade {
+  transition: opacity .15s linear;
+}
+
+#cookieConsent .close {
+  text-shadow: none;
+  float: right;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #000;
+  opacity: .5;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+/*
+cookieConsent css close here
+*/
+
 body {
   background-color: #dce0e414;
 }

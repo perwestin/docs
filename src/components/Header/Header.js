@@ -4,6 +4,7 @@ import sizeMe from 'react-sizeme';
 import { connect } from "react-redux";
 import { updateHeaderHeight } from '../../actions/layout';
 import Logo from './Logo.js';
+import CookieConsent from './CookieConsent';
 
 class Header extends Component {
   componentDidUpdate = () => {
@@ -15,6 +16,7 @@ class Header extends Component {
 
     return (
       <div className='header'>
+        <CookieConsent />
         {logo}
         <a className = "register" href="/obp.postman_collection.json" target="_blank">Download Postman Collection</a>
         <a className="register" href="https://auth.sandbox.openbankingplatform.com/client/register" target="_blank">Register a client</a>

@@ -23,6 +23,7 @@
     "gatsby-transformer-sharp": "^2.1.19",
     "katex": "^0.10.1",
     "react": "^16.8.6",
+    "react-cookie": "^4.0.0",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",
     "react-redux": "^7.0.2",
