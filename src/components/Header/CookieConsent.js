@@ -17,14 +17,12 @@ function CookieConsent(props) {
     }
 
     return (
-    <>
         <div id="cookieConsent" className="alert alert-info alert-dismissible fade show" role="alert">
-            We use cookies to increase your experience while visiting our site. <a href="/client/cookies">Learn More</a>.
-            <button type="button" className="accept-policy close" data-dismiss="alert" aria-label="Close" onClick={consents}>
-                <span aria-hidden="true">Accept</span>
+            We use cookies to increase your experience while visiting our site. <a href="/docs/cookies">Learn More</a>.
+            <button type="button" className="accept-policy close" data-dismiss="alert" onClick={consents}>
+                <span>Accept</span>
             </button>
         </div>
-    </>
     )
 }
 

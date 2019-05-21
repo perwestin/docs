@@ -117,7 +117,9 @@ class SidebarContents extends Component {
           }
         `}
         render={data => {
-          const markdownDocNodes = data.allMarkdownRemark.edges.filter(node => node.node.fields.slug.startsWith(root))
+          const markdownDocNodes = data.allMarkdownRemark.edges
+            .filter(node => node.node.fields.slug.startsWith(root))
+            .filter(node => node.node.frontmatter.parents[0] !== 'Orphaned')
           const apiNodes = configurationOfType(data.allJson, 'api')
           const [tree, dir] = convertToTree(markdownDocNodes, apiNodes)
           sortTree(tree)

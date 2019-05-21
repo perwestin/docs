@@ -26,8 +26,6 @@ function Template({
       <div className="blog-post-container">
         <a className="editme" href={editUrl}>Edit me.... </a>
         <div className="blog-post">
-          {/* <h1>{frontmatter.title}</h1>
-          <h5>{frontmatter.date}</h5> */}
           <div
             className="blog-post-content"
             dangerouslySetInnerHTML={{ __html: html }}
@@ -59,7 +57,6 @@ export const pageQuery = graphql`
       id
       html
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
         title
         root
       }
