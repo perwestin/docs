@@ -9,83 +9,95 @@
 			"name": "ASPSP Information Service",
 			"item": [
 				{
-					"name": "Get ASPSP Information Token",
-					"event": [
+					"name": "OAuth",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"id": "d5871ac1-5ee5-4f3e-b1f6-869e1c6f989c",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"",
-									"pm.environment.set(\"aspspInformationBearerToken\", jsonData.access_token);"
-								],
-								"type": "text/javascript"
-							}
+							"name": "client_credentials",
+							"item": [
+								{
+									"name": "Request ASPSP Information token",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "d5871ac1-5ee5-4f3e-b1f6-869e1c6f989c",
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"",
+													"pm.environment.set(\"aspspInformationBearerToken\", jsonData.access_token);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/x-www-form-urlencoded",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "client_id",
+													"value": "{{clientId}}",
+													"type": "text"
+												},
+												{
+													"key": "client_secret",
+													"value": "{{clientSecret}}",
+													"type": "text"
+												},
+												{
+													"key": "grant_type",
+													"value": "{{aspspInformationGrantType}}",
+													"type": "text"
+												},
+												{
+													"key": "scope",
+													"value": "{{aspspInformationScope}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "https://auth.{{environment}}.openbankingplatform.com/connect/token",
+											"protocol": "https",
+											"host": [
+												"auth",
+												"{{environment}}",
+												"openbankingplatform",
+												"com"
+											],
+											"path": [
+												"connect",
+												"token"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
 						}
 					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/x-www-form-urlencoded",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "client_id",
-									"value": "{{clientId}}",
-									"type": "text"
-								},
-								{
-									"key": "client_secret",
-									"value": "{{clientSecret}}",
-									"type": "text"
-								},
-								{
-									"key": "grant_type",
-									"value": "{{aspspInformationGrantType}}",
-									"type": "text"
-								},
-								{
-									"key": "scope",
-									"value": "{{aspspInformationScope}}",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "https://auth.{{environment}}.openbankingplatform.com/connect/token",
-							"protocol": "https",
-							"host": [
-								"auth",
-								"{{environment}}",
-								"openbankingplatform",
-								"com"
-							],
-							"path": [
-								"connect",
-								"token"
-							]
-						}
-					},
-					"response": []
+					"_postman_isSubFolder": true
 				},
 				{
-					"name": "Get Countries",
+					"name": "Get countries",
 					"event": [
 						{
 							"listen": "test",
@@ -152,7 +164,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Country",
+					"name": "Get country",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -192,7 +204,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Cities",
+					"name": "Get cities",
 					"event": [
 						{
 							"listen": "test",
@@ -264,7 +276,7 @@
 					"response": []
 				},
 				{
-					"name": "Get City",
+					"name": "Get city",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -374,7 +386,7 @@
 					"response": []
 				},
 				{
-					"name": "Get ASPSP Details",
+					"name": "Get ASPSP details",
 					"event": [
 						{
 							"listen": "test",
@@ -470,232 +482,230 @@
 			"name": "Consent Service",
 			"item": [
 				{
-					"name": "OAuth - authorization_code",
+					"name": "OAuth",
 					"item": [
 						{
-							"name": "Get consent authorisation OAuth start URL",
-							"request": {
-								"auth": {
-									"type": "noauth"
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "https://auth.{{environment}}.openbankingplatform.com/connect/authorize?client_id={{clientId}}&scope={{accountInformationScope}}&response_type={{responseType}}&redirect_uri={{redirectUri}}&state={{state}}&acr_values=idp:{{bicFi}} consentId:{{consentId}}  consentAuthorisationId:{{consentAuthorisationId}}",
-									"protocol": "https",
-									"host": [
-										"auth",
-										"{{environment}}",
-										"openbankingplatform",
-										"com"
-									],
-									"path": [
-										"connect",
-										"authorize"
-									],
-									"query": [
-										{
-											"key": "client_id",
-											"value": "{{clientId}}"
-										},
-										{
-											"key": "scope",
-											"value": "{{accountInformationScope}}"
-										},
-										{
-											"key": "response_type",
-											"value": "{{responseType}}"
-										},
-										{
-											"key": "redirect_uri",
-											"value": "{{redirectUri}}"
-										},
-										{
-											"key": "state",
-											"value": "{{state}}"
-										},
-										{
-											"key": "acr_values",
-											"value": "idp:{{bicFi}} consentId:{{consentId}}  consentAuthorisationId:{{consentAuthorisationId}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Activate OAuth consent authorisation",
-							"event": [
+							"name": "authorization_code",
+							"item": [
 								{
-									"listen": "test",
-									"script": {
-										"id": "d6ac0bfa-ff06-426f-a8c9-db3707b51d5e",
-										"exec": [
-											"var jsonData = JSON.parse(responseBody);",
-											"",
-											"pm.environment.set(\"accountBearerToken\", jsonData.access_token);"
+									"name": "Get consent authorisation OAuth start URL",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://auth.{{environment}}.openbankingplatform.com/connect/authorize?client_id={{clientId}}&scope={{accountInformationScope}}&response_type={{responseType}}&redirect_uri={{redirectUri}}&state={{state}}&acr_values=idp:{{bicFi}} consentId:{{consentId}}  consentAuthorisationId:{{consentAuthorisationId}}",
+											"protocol": "https",
+											"host": [
+												"auth",
+												"{{environment}}",
+												"openbankingplatform",
+												"com"
+											],
+											"path": [
+												"connect",
+												"authorize"
+											],
+											"query": [
+												{
+													"key": "client_id",
+													"value": "{{clientId}}"
+												},
+												{
+													"key": "scope",
+													"value": "{{accountInformationScope}}"
+												},
+												{
+													"key": "response_type",
+													"value": "{{responseType}}"
+												},
+												{
+													"key": "redirect_uri",
+													"value": "{{redirectUri}}"
+												},
+												{
+													"key": "state",
+													"value": "{{state}}"
+												},
+												{
+													"key": "acr_values",
+													"value": "idp:{{bicFi}} consentId:{{consentId}}  consentAuthorisationId:{{consentAuthorisationId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Activate OAuth consent authorisation",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded"
+											},
+											{
+												"key": "X-ConsentId",
+												"value": "{{consentId}}",
+												"type": "text"
+											},
+											{
+												"key": "X-ConsentAuthorisationId",
+												"value": "{{consentAuthorisationId}}",
+												"type": "text"
+											}
 										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "noauth"
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/x-www-form-urlencoded"
-									},
-									{
-										"key": "X-ConsentId",
-										"value": "{{consentId}}",
-										"type": "text"
-									},
-									{
-										"key": "X-ConsentAuthorisationId",
-										"value": "{{consentAuthorisationId}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "client_id",
-											"value": "{{clientId}}",
-											"type": "text"
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "client_id",
+													"value": "{{clientId}}",
+													"type": "text"
+												},
+												{
+													"key": "client_secret",
+													"value": "{{clientSecret}}",
+													"type": "text"
+												},
+												{
+													"key": "code",
+													"value": "{{accountInformationCode}}",
+													"type": "text"
+												},
+												{
+													"key": "redirect_uri",
+													"value": "{{redirectUri}}",
+													"type": "text"
+												},
+												{
+													"key": "scope",
+													"value": "{{accountInformationScope}}",
+													"type": "text"
+												},
+												{
+													"key": "grant_type",
+													"value": "{{accountInformationGrantType}}",
+													"type": "text"
+												}
+											]
 										},
-										{
-											"key": "client_secret",
-											"value": "{{clientSecret}}",
-											"type": "text"
-										},
-										{
-											"key": "code",
-											"value": "{{accountInformationCode}}",
-											"type": "text"
-										},
-										{
-											"key": "redirect_uri",
-											"value": "{{redirectUri}}",
-											"type": "text"
-										},
-										{
-											"key": "scope",
-											"value": "{{accountInformationScope}}",
-											"type": "text"
-										},
-										{
-											"key": "grant_type",
-											"value": "{{accountInformationGrantType}}",
-											"type": "text"
+										"url": {
+											"raw": "https://auth.{{environment}}.openbankingplatform.com/connect/token",
+											"protocol": "https",
+											"host": [
+												"auth",
+												"{{environment}}",
+												"openbankingplatform",
+												"com"
+											],
+											"path": [
+												"connect",
+												"token"
+											]
 										}
-									]
-								},
-								"url": {
-									"raw": "https://auth.{{environment}}.openbankingplatform.com/connect/token",
-									"protocol": "https",
-									"host": [
-										"auth",
-										"{{environment}}",
-										"openbankingplatform",
-										"com"
-									],
-									"path": [
-										"connect",
-										"token"
-									]
+									},
+									"response": []
 								}
-							},
-							"response": []
-						}
-					],
-					"description": "Used for ASPSPs that uses the Decoupled/OAuth flow.",
-					"_postman_isSubFolder": true
-				},
-				{
-					"name": "Get Account Information Token",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "c6851e17-0af1-4ff5-b345-6308ce01fd8a",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"",
-									"pm.environment.set(\"accountBearerToken\", jsonData.access_token);"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/x-www-form-urlencoded",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "client_id",
-									"value": "{{clientId}}",
-									"type": "text"
-								},
-								{
-									"key": "client_secret",
-									"value": "{{clientSecret}}",
-									"type": "text"
-								},
-								{
-									"key": "grant_type",
-									"value": "{{accountInformationClientGrantType}}",
-									"type": "text"
-								},
-								{
-									"key": "scope",
-									"value": "{{accountInformationScope}}",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "https://auth.{{environment}}.openbankingplatform.com/connect/token",
-							"protocol": "https",
-							"host": [
-								"auth",
-								"{{environment}}",
-								"openbankingplatform",
-								"com"
 							],
-							"path": [
-								"connect",
-								"token"
-							]
+							"description": "Used for ASPSPs that uses the Decoupled/OAuth flow.",
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "client_credentials",
+							"item": [
+								{
+									"name": "Request Account Informationt token",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "c6851e17-0af1-4ff5-b345-6308ce01fd8a",
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"",
+													"pm.environment.set(\"accountBearerToken\", jsonData.access_token);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/x-www-form-urlencoded",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "client_id",
+													"value": "{{clientId}}",
+													"type": "text"
+												},
+												{
+													"key": "client_secret",
+													"value": "{{clientSecret}}",
+													"type": "text"
+												},
+												{
+													"key": "grant_type",
+													"value": "{{accountInformationClientGrantType}}",
+													"type": "text"
+												},
+												{
+													"key": "scope",
+													"value": "{{accountInformationScope}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "https://auth.{{environment}}.openbankingplatform.com/connect/token",
+											"protocol": "https",
+											"host": [
+												"auth",
+												"{{environment}}",
+												"openbankingplatform",
+												"com"
+											],
+											"path": [
+												"connect",
+												"token"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
 						}
-					},
-					"response": []
+					],
+					"_postman_isSubFolder": true
 				},
 				{
 					"name": "Create consent",
@@ -1264,80 +1274,92 @@
 			"name": "Account Information Service",
 			"item": [
 				{
-					"name": "Get Account Information Token",
-					"event": [
+					"name": "OAuth",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"id": "c6851e17-0af1-4ff5-b345-6308ce01fd8a",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"",
-									"pm.environment.set(\"accountBearerToken\", jsonData.access_token);"
-								],
-								"type": "text/javascript"
-							}
+							"name": "client_credentials",
+							"item": [
+								{
+									"name": "Request Account Informationt token",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "c6851e17-0af1-4ff5-b345-6308ce01fd8a",
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"",
+													"pm.environment.set(\"accountBearerToken\", jsonData.access_token);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/x-www-form-urlencoded",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "client_id",
+													"value": "{{clientId}}",
+													"type": "text"
+												},
+												{
+													"key": "client_secret",
+													"value": "{{clientSecret}}",
+													"type": "text"
+												},
+												{
+													"key": "grant_type",
+													"value": "{{accountInformationClientGrantType}}",
+													"type": "text"
+												},
+												{
+													"key": "scope",
+													"value": "{{accountInformationScope}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "https://auth.{{environment}}.openbankingplatform.com/connect/token",
+											"protocol": "https",
+											"host": [
+												"auth",
+												"{{environment}}",
+												"openbankingplatform",
+												"com"
+											],
+											"path": [
+												"connect",
+												"token"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
 						}
 					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/x-www-form-urlencoded",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "client_id",
-									"value": "{{clientId}}",
-									"type": "text"
-								},
-								{
-									"key": "client_secret",
-									"value": "{{clientSecret}}",
-									"type": "text"
-								},
-								{
-									"key": "grant_type",
-									"value": "{{accountInformationClientGrantType}}",
-									"type": "text"
-								},
-								{
-									"key": "scope",
-									"value": "{{accountInformationScope}}",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "https://auth.{{environment}}.openbankingplatform.com/connect/token",
-							"protocol": "https",
-							"host": [
-								"auth",
-								"{{environment}}",
-								"openbankingplatform",
-								"com"
-							],
-							"path": [
-								"connect",
-								"token"
-							]
-						}
-					},
-					"response": []
+					"_postman_isSubFolder": true
 				},
 				{
 					"name": "Read account list",
@@ -1727,232 +1749,230 @@
 			"name": "Payment Initiation Service",
 			"item": [
 				{
-					"name": "OAuth - authorization_code",
+					"name": "OAuth",
 					"item": [
 						{
-							"name": "Get payment authorisation OAuth start URL",
-							"request": {
-								"auth": {
-									"type": "noauth"
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "https://auth.{{environment}}.openbankingplatform.com/connect/authorize?client_id={{clientId}}&scope={{paymentInitiationScope}}&response_type={{responseType}}&redirect_uri={{redirectUri}}&state={{state}}&acr_values=idp:{{bicFi}} paymentId:{{paymentId}} paymentAuthorisationId:{{paymentAuthorisationId}}",
-									"protocol": "https",
-									"host": [
-										"auth",
-										"{{environment}}",
-										"openbankingplatform",
-										"com"
-									],
-									"path": [
-										"connect",
-										"authorize"
-									],
-									"query": [
-										{
-											"key": "client_id",
-											"value": "{{clientId}}"
-										},
-										{
-											"key": "scope",
-											"value": "{{paymentInitiationScope}}"
-										},
-										{
-											"key": "response_type",
-											"value": "{{responseType}}"
-										},
-										{
-											"key": "redirect_uri",
-											"value": "{{redirectUri}}"
-										},
-										{
-											"key": "state",
-											"value": "{{state}}"
-										},
-										{
-											"key": "acr_values",
-											"value": "idp:{{bicFi}} paymentId:{{paymentId}} paymentAuthorisationId:{{paymentAuthorisationId}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Activate OAuth payment authorisation",
-							"event": [
+							"name": "authorization_code",
+							"item": [
 								{
-									"listen": "test",
-									"script": {
-										"id": "853db910-409c-4393-882d-8020307ea5a9",
-										"exec": [
-											"var jsonData = JSON.parse(responseBody);",
-											"",
-											"pm.environment.set(\"paymentBearerToken\", jsonData.access_token);"
+									"name": "Get payment authorisation OAuth start URL",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://auth.{{environment}}.openbankingplatform.com/connect/authorize?client_id={{clientId}}&scope={{paymentInitiationScope}}&response_type={{responseType}}&redirect_uri={{redirectUri}}&state={{state}}&acr_values=idp:{{bicFi}} paymentId:{{paymentId}} paymentAuthorisationId:{{paymentAuthorisationId}}",
+											"protocol": "https",
+											"host": [
+												"auth",
+												"{{environment}}",
+												"openbankingplatform",
+												"com"
+											],
+											"path": [
+												"connect",
+												"authorize"
+											],
+											"query": [
+												{
+													"key": "client_id",
+													"value": "{{clientId}}"
+												},
+												{
+													"key": "scope",
+													"value": "{{paymentInitiationScope}}"
+												},
+												{
+													"key": "response_type",
+													"value": "{{responseType}}"
+												},
+												{
+													"key": "redirect_uri",
+													"value": "{{redirectUri}}"
+												},
+												{
+													"key": "state",
+													"value": "{{state}}"
+												},
+												{
+													"key": "acr_values",
+													"value": "idp:{{bicFi}} paymentId:{{paymentId}} paymentAuthorisationId:{{paymentAuthorisationId}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Activate OAuth payment authorisation",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded"
+											},
+											{
+												"key": "X-PaymentId",
+												"value": "{{paymentId}}",
+												"type": "text"
+											},
+											{
+												"key": "X-PaymentAuthorisationId",
+												"value": "{{paymentAuthorisationId}}",
+												"type": "text"
+											}
 										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "noauth"
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/x-www-form-urlencoded"
-									},
-									{
-										"key": "X-PaymentId",
-										"value": "{{paymentId}}",
-										"type": "text"
-									},
-									{
-										"key": "X-PaymentAuthorisationId",
-										"value": "{{paymentAuthorisationId}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "client_id",
-											"value": "{{clientId}}",
-											"type": "text"
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "client_id",
+													"value": "{{clientId}}",
+													"type": "text"
+												},
+												{
+													"key": "client_secret",
+													"value": "{{clientSecret}}",
+													"type": "text"
+												},
+												{
+													"key": "code",
+													"value": "{{paymentInitiationCode}}",
+													"type": "text"
+												},
+												{
+													"key": "redirect_uri",
+													"value": "{{redirectUri}}",
+													"type": "text"
+												},
+												{
+													"key": "scope",
+													"value": "{{paymentInitiationScope}}",
+													"type": "text"
+												},
+												{
+													"key": "grant_type",
+													"value": "{{paymentInitiationGrantType}}",
+													"type": "text"
+												}
+											]
 										},
-										{
-											"key": "client_secret",
-											"value": "{{clientSecret}}",
-											"type": "text"
-										},
-										{
-											"key": "code",
-											"value": "{{paymentInitiationCode}}",
-											"type": "text"
-										},
-										{
-											"key": "redirect_uri",
-											"value": "{{redirectUri}}",
-											"type": "text"
-										},
-										{
-											"key": "scope",
-											"value": "{{paymentInitiationScope}}",
-											"type": "text"
-										},
-										{
-											"key": "grant_type",
-											"value": "{{paymentInitiationGrantType}}",
-											"type": "text"
+										"url": {
+											"raw": "https://auth.{{environment}}.openbankingplatform.com/connect/token",
+											"protocol": "https",
+											"host": [
+												"auth",
+												"{{environment}}",
+												"openbankingplatform",
+												"com"
+											],
+											"path": [
+												"connect",
+												"token"
+											]
 										}
-									]
-								},
-								"url": {
-									"raw": "https://auth.{{environment}}.openbankingplatform.com/connect/token",
-									"protocol": "https",
-									"host": [
-										"auth",
-										"{{environment}}",
-										"openbankingplatform",
-										"com"
-									],
-									"path": [
-										"connect",
-										"token"
-									]
+									},
+									"response": []
 								}
-							},
-							"response": []
-						}
-					],
-					"description": "Used for ASPSPs that uses the Decoupled/OAuth flow.",
-					"_postman_isSubFolder": true
-				},
-				{
-					"name": "Get Payment Initiation Token",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "2912a2e7-d771-4bb6-b2f3-18adb332ee45",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"",
-									"pm.environment.set(\"paymentBearerToken\", jsonData.access_token);"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/x-www-form-urlencoded",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "client_id",
-									"value": "{{clientId}}",
-									"type": "text"
-								},
-								{
-									"key": "client_secret",
-									"value": "{{clientSecret}}",
-									"type": "text"
-								},
-								{
-									"key": "grant_type",
-									"value": "{{paymentInitiationClientGrantType}}",
-									"type": "text"
-								},
-								{
-									"key": "scope",
-									"value": "{{paymentInitiationScope}}",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "https://auth.{{environment}}.openbankingplatform.com/connect/token",
-							"protocol": "https",
-							"host": [
-								"auth",
-								"{{environment}}",
-								"openbankingplatform",
-								"com"
 							],
-							"path": [
-								"connect",
-								"token"
-							]
+							"description": "Used for ASPSPs that uses the Decoupled/OAuth flow.",
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "client_credentials",
+							"item": [
+								{
+									"name": "Request Payment Initiation token",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "2912a2e7-d771-4bb6-b2f3-18adb332ee45",
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"",
+													"pm.environment.set(\"paymentBearerToken\", jsonData.access_token);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/x-www-form-urlencoded",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "client_id",
+													"value": "{{clientId}}",
+													"type": "text"
+												},
+												{
+													"key": "client_secret",
+													"value": "{{clientSecret}}",
+													"type": "text"
+												},
+												{
+													"key": "grant_type",
+													"value": "{{paymentInitiationClientGrantType}}",
+													"type": "text"
+												},
+												{
+													"key": "scope",
+													"value": "{{paymentInitiationScope}}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "https://auth.{{environment}}.openbankingplatform.com/connect/token",
+											"protocol": "https",
+											"host": [
+												"auth",
+												"{{environment}}",
+												"openbankingplatform",
+												"com"
+											],
+											"path": [
+												"connect",
+												"token"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
 						}
-					},
-					"response": []
+					],
+					"_postman_isSubFolder": true
 				},
 				{
 					"name": "Payment initiation request",
