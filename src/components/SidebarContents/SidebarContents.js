@@ -132,7 +132,7 @@ class SidebarContents extends Component {
                 </SubMenu>
               )
             }
-            if (pathname.includes(item.path)) {
+            if (typeof pathname !== 'undefined' && pathname.includes(item.path)) {
               return (
                 <Menu.Item key={item.key}>
                   {item.title}
@@ -145,7 +145,7 @@ class SidebarContents extends Component {
               </Menu.Item>
             )
           })
-          const path = pathname.replace(pathPrefix.slice(0,-1),"")
+          const path = typeof pathname !== 'undefined' ? pathname.replace(pathPrefix.slice(0,-1),"") : '';
           const selectedKeys = data.allMarkdownRemark.edges
             .filter(item => path === item.node.fields.slug ||
               (path.slice(0,-1) === item.node.fields.slug && path.slice(-1) === '/'))

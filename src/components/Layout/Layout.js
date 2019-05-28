@@ -7,6 +7,7 @@ import './Layout.css'
 import ResponsiveSidebar from '../ResponsiveSidebar';
 import Container from '../Container';
 import ResponsiveAnchor from '../ResponsiveAnchor';
+import ResponsiveTopBar from '../ResponsiveTopBar';
 import Footer from '../Footer';
 import { connect } from 'react-redux'
 import { pathPrefix } from '../../../gatsby-config'
@@ -83,6 +84,7 @@ const Layout = ({
             </Helmet>
             <Header siteTitle={data.site.siteMetadata.title} />
             {(!matches && pathname !== '/') ? <><ResponsiveSidebar root={sidebarRoot} pathname={pathname}/> <ResponsiveAnchor /> </> : null }
+            {(matches && pathname !== '/') ? <ResponsiveTopBar root={sidebarRoot}/> : null}
             <Container sidebarDocked={!matches} onPostPage={onPostPage} width={pathname === '/' ? "100%" : "50%"}>
               {children}
             </Container>
