@@ -34,6 +34,6 @@ corresponding to the building stones described above. OAS3 specifications are av
 - [ASPSP](/api/aspsp)
 - [Account Information](/api/accounts)
 - [Consent](/api/consent)
-- [Payment Initiation](/api/payment-initiation)
+- [Payment Initiation](/api/payment initiation)
 
 We plan to support other standards in this field in the future - let us know your needs and we can have a dialogue about how to make it happen.
