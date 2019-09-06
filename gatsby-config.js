@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Developer Portal',
+    title: 'Open Payments Documentation',
     githubBase: 'https://github.com/openpaymentseurope/docs/tree/master/contents'
   },
   plugins: [

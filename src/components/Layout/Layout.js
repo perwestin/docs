@@ -75,8 +75,8 @@ const Layout = ({
             <Helmet
               title={data.site.siteMetadata.title}
               meta={[
-                { name: 'description', content: 'Sample' },
-                { name: 'keywords', content: 'sample, something' },
+                { name: 'description', content: 'Open Payments Documentation' },
+                { name: 'keywords', content: 'payments, account, api, aspsp, psd2, docs, documentation' },
               ]}
               link={[{rel:"stylesheet", href:"https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,700,900|Material+Icons"}]}
             >
