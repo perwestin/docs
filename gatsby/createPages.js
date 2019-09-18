@@ -22,7 +22,7 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
         }
       }
 
-      allJson {
+      allApispecsJson {
         edges {
           node {
             name
@@ -45,7 +45,7 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
       })
     })
 
-    configurationOfType(result.data.allJson, "api").forEach((node) => {
+    configurationOfType(result.data.allApispecsJson).forEach((node) => {
       createPage({
         path: 'api/' + node.name.toLowerCase(),
         component: swaggerTemplate,

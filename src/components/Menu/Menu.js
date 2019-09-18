@@ -7,7 +7,7 @@ const Menu = () => {
     <StaticQuery
       query={graphql`
         query {
-          allJson {
+          allMenuItemsJson {
             edges {
               node {
                 name
@@ -19,7 +19,7 @@ const Menu = () => {
         }
       `}
       render={data => {
-        const menuItems = configurationOfType(data.allJson, 'menu')
+        const menuItems = configurationOfType(data.allMenuItemsJson, 'menu')
 
         return (
           <div>

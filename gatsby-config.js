@@ -9,9 +9,11 @@ module.exports = {
     // available in GraphQL with the allJson query
     {
       resolve: `gatsby-transformer-json`,
-      options: {
-        typeName: `Json`, // a fixed string
-      },
+      path: `${__dirname}/src/menuItems`,
+    },
+    {
+      resolve: `gatsby-transformer-json`,
+      path: `${__dirname}/src/apispecs`,
     },
     // mounts static files like images and jsons in the GraphQL world
     {

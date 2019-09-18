@@ -104,7 +104,7 @@ class SidebarContents extends Component {
               }
             }
 
-            allJson {
+            allApispecsJson {
               edges {
                 node {
                   name
@@ -120,7 +120,7 @@ class SidebarContents extends Component {
           const markdownDocNodes = data.allMarkdownRemark.edges
             .filter(node => node.node.fields.slug.startsWith(root))
             .filter(node => node.node.frontmatter.parents[0] !== 'Orphaned')
-          const apiNodes = configurationOfType(data.allJson, 'api')
+          const apiNodes = configurationOfType(data.allApispecsJson, 'api')
           const [tree, dir] = convertToTree(markdownDocNodes, apiNodes)
           sortTree(tree)
           const loop = data => data.map((item) => {
