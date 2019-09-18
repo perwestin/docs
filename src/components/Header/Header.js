@@ -19,7 +19,9 @@ class Header extends Component {
         <CookieConsent />
         {logo}
         <a className = "register" href="/obp.postman_collection.json" target="_blank">Download Postman Collection</a>
-        <a className="register" href="https://auth.sandbox.openbankingplatform.com/client/register" target="_blank">Register a client</a>
+        <a className="register" href="https://customer.openpayments.io" target="_blank">
+          Sign up in the customer portal
+        </a>
       </div>
     )
   }
