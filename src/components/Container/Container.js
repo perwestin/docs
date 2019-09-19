@@ -6,8 +6,6 @@ class Container extends Component {
   render() {
     const {
       sidebarDocked, 
-      headerHeight, 
-      onPostPage,
       backgroundColor = 'white',
       width = "100%"
     } = this.props;

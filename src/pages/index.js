@@ -1,8 +1,7 @@
 import React from 'react'
 import Layout from '../components/Layout'
 import Button from 'antd/lib/button'
-import { Link } from "gatsby"
-import Img from "gatsby-image"
+import { Link, graphql } from "gatsby"
 
 const IndexPage = ({data}) => {
   return (
@@ -35,17 +34,6 @@ const IndexPage = ({data}) => {
           </div>
       </div>
       </section>
-
-      {/* <div className="container">
-      <img src={data.file.childImageSharp.fluid.src} />
-      <h1>Open Payments Europe</h1>
-      <p className="text-muted">Open Payments Europe provides the groundbreaking market infrastructure required for successful Open Banking.</p>
-      <div>
-        <a color="accent" href="https://openpayments.io" target="_blank" className="btn btn-primary">
-          Go to Open Payments Europe corporate website
-          </a>
-      </div> 
-    </div>*/}
     </Layout>
   )
 }
@@ -61,16 +49,5 @@ export const pageQuery = graphql`
     }
   }
 `
-// export const pageQuery2 = graphql`
-//   query {
-//     logo: file(name: { eq: "logo" }) {
-//       childImageSharp {
-//         fluid(maxWidth:100) {
-//           ...GatsbyImageSharpFluid
-//         }
-//       }
-//     }
-//   }
-// `
 
 export default IndexPage

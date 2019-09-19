@@ -18,8 +18,10 @@ class Header extends Component {
       <div className='header'>
         <CookieConsent />
         {logo}
-        <a className = "register" href="/obp.postman_collection.json" target="_blank">Download Postman Collection</a>
-        <a className="register" href="https://customer.openpayments.io" target="_blank">
+        <a className = "register" href="/obp.postman_collection.json" target="_blank" rel="noopener noreferrer">
+          Download Postman Collection
+        </a>
+        <a className="register" href="https://customer.openpayments.io" target="_blank" rel="noopener noreferrer">
           Sign up in the customer portal
         </a>
       </div>
