@@ -1,5 +1,5 @@
 
-const { replacePath, configurationOfType } = require('./utils')
+const { replacePath } = require('./utils')
 const path = require("path")
 
 module.exports = exports.createPages = ({ actions, graphql }) => {
@@ -45,7 +45,7 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
       })
     })
 
-    configurationOfType(result.data.allApispecsJson).forEach((node) => {
+    result.data.allApispecsJson.edges.forEach(({ node }) => {
       createPage({
         path: 'api/' + node.name.toLowerCase(),
         component: swaggerTemplate,

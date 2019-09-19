@@ -6,7 +6,6 @@ import { onSetSidebarOpen } from '../../actions/layout'
 import Menu from 'antd/lib/menu'
 import './SidebarContents.css'
 import { pathPrefix } from '../../../gatsby-config'
-import { configurationOfType } from '../../../gatsby/utils'
 
 const SubMenu = Menu.SubMenu
 
@@ -120,7 +119,7 @@ class SidebarContents extends Component {
           const markdownDocNodes = data.allMarkdownRemark.edges
             .filter(node => node.node.fields.slug.startsWith(root))
             .filter(node => node.node.frontmatter.parents[0] !== 'Orphaned')
-          const apiNodes = configurationOfType(data.allApispecsJson, 'api')
+          const apiNodes = data.allApispecsJson.edges.map(node => node.node)
           const [tree, dir] = convertToTree(markdownDocNodes, apiNodes)
           sortTree(tree)
           const loop = data => data.map((item) => {
