@@ -7,20 +7,22 @@ prio: 0
 # Getting started with the API and ASPSP
 
 Open Payments Platform uses OAuth2 (specifically OIDC) for authentication. In the following sections, we have provided step
-by step instructions on how you will interact with the platform.
+by step instructions on how you will interact with the platform. Throughout this documentation we use brackets to denote variables that need to be replaced with corresponding values. The actual domains to access are two - one for handling auth and one for doing the actual calls. See list below for values in sandbox and production.
 
 Available `AUTH_HOST` values
 - https://auth.sandbox.openbankingplatform.com
+- https://auth.openbankingplatform.com
 
 Available `API_HOST` values
 - https://api.sandbox.openbankingplatform.com
+- https://api.openbankingplatform.com
 
 ## Register a client
 
-Navigate to [https://auth.sandbox.openbankingplatform.com/client/register](the client registration page) to acquire client credentials.
+Sign up an account in the [customer portal](https://customer.openpayments.io) to acquire client credentials.
 Decide what parts of the API you want access to for your new client. At this point you can choose one or several of ASPSP Information, Account Information
 and Payment Initiation. Read more about these below.
-You will get a `client_id` and a `client_secret` that you can use to authenticate with the platform.
+You will get a `client_id` and a `client_secret` that you can use to authenticate with the platform. The secret will not be stored on our end so it is iportant that you keep track of it. Otherwise you'll have to obtain new credentials in the portal.
 
 ## Acquire an access token for ASPSP Information
 
@@ -36,6 +38,8 @@ This post will return a JSON object that looks like this:
         "expires_in": 3600,
         "token_type": "Bearer"
     }
+
+Bring the ACCESS_TOKEN forward to subsequent calls.
 
 ## Get countries
 
