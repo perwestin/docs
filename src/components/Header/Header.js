@@ -21,8 +21,8 @@ class Header extends Component {
         <a className = "register" href="/obp.postman_collection.json" target="_blank" rel="noopener noreferrer">
           Download Postman Collection
         </a>
-        <a className="register" href="https://customer.openpayments.io" target="_blank" rel="noopener noreferrer">
-          Sign up in the customer portal
+        <a className="register" href="https://auth.sandbox.openbankingplatform.com/client/register" target="_blank" rel="noopener noreferrer">
+          Register a client
         </a>
       </div>
     )

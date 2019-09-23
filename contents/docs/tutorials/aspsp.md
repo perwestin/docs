@@ -20,7 +20,7 @@ Available `API_HOST` values
 
 ## Register a client
 
-Sign up an account in the [customer portal](https://customer.openpayments.io) to acquire client credentials.
+[Register a client](https://auth.sandbox.openbankingplatform.com/client/register) to acquire client credentials.
 Decide what parts of the API you want access to for your new client. At this point you can choose one or several of ASPSP Information, Account Information
 and Payment Initiation. Read more about these below.
 You will get a `client_id` and a `client_secret` that you can use to authenticate with the platform. The secret will not be stored on our end so it is iportant that you keep track of it. Otherwise you'll have to obtain new credentials in the portal.
