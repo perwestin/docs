@@ -8,9 +8,11 @@ prio: 1
 
 Available `AUTH_HOST` values
 - https://auth.sandbox.openbankingplatform.com
+- https://auth.openbankingplatform.com
 
 Available `API_HOST` values
 - https://api.sandbox.openbankingplatform.com
+- https://api.openbankingplatform.com
 
 ## Acquire an access token for Account Information
 
