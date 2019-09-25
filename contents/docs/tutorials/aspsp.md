@@ -45,7 +45,8 @@ This post will return a JSON object that looks like this:
     {
         "access_token": "[ACCESS_TOKEN]",
         "expires_in": 7776000,
-        "token_type": "Bearer"
+        "token_type": "Bearer",
+        "scope": "aspspinformation"
     }
 
 Bring the ACCESS_TOKEN forward to subsequent calls.

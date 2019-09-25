@@ -6,6 +6,8 @@ prio: 1
 ---
 # Getting started with Account Consents
 
+This API is used to retreive and manage consent for accessing account information on behalf of a banks customer. If you are new to Open Payments API it is probably best to read a bit about how the APIs work in the [ASPSP tutorial](/docs/tutorials/aspsp).
+
 Available `AUTH_HOST` values
 - https://auth.sandbox.openbankingplatform.com
 - https://auth.openbankingplatform.com
@@ -14,6 +16,7 @@ Available `API_HOST` values
 - https://api.sandbox.openbankingplatform.com
 - https://api.openbankingplatform.com
 
+
 ## Acquire an access token for Account Information
 
     curl -X POST
@@ -21,15 +24,21 @@ Available `API_HOST` values
 		-H 'Content-Type: application/x-www-form-urlencoded'
 		-d 'client_id=[CLIENT_ID]&client_secret=[CLIENT_SECRET]&scope=accountinformation&grant_type=client_credentials'
 
+If you have looked at the ASPSP tutorial you will notice that this is similar. The only difference is the `scope` that you get the token for. Here it should be set to `accountinformation`.
+
 This post will return a JSON object that looks like this:
 
     {
         "access_token": "[ACCESS_TOKEN]",
         "expires_in": 3600,
-        "token_type": "Bearer"
+        "token_type": "Bearer",
+        "scope": "accountinformation"
     }
 
-## Create consent
+
+## Create consent request
+
+This endpoint is used to initiate the consent process with a request for consent.
 
     curl -X POST
 		[API_HOST]/psd2/consent/v1/consents
@@ -103,22 +112,32 @@ The `balances` and `transactions` consent request must contain a subset of the a
             }
         ],
         "_links": {
+            "self": {
+                "href": "/psd2/consent/v1/consents/[CONSENT_ID]"
+            },
             "status": {
                 "href": "/psd2/consent/v1/consents/[CONSENT_ID]/status"
             },
-            "startAuthorisationWithTransactionAuthorisation": {
+            "startAuthorisation": {
                 "href": "/psd2/consent/v1/consents/[CONSENT_ID]/authorisations"
-            },
-            "self": {
-                "href": "/psd2/consent/v1/consents/[CONSENT_ID]"
             }
         }
     }
+
+At this point the returned status should always be `received`. All possible values are listed [below](#consent-status).
+
+The list at `scaMethods` typically contains one entry. But in the future it is possible that banks - or our platform here - will support multiple methods.
+
+Authentication type will always be `PUSH_OTP` since that is what the banks we integrate with support. In the future it may change. See [below](#authentication-type) for a list of possible types.
+
+The list of links can be used for further actions on the consent. The `self` one is obviously to retreive the created consent request. The `status` is for accessing the status of the request. And `startAuthorisation`is the next step in the sequence of calls that is needed to get a consent.
+
 
 ### Response headers
 
 - `ASPSP-SCA-Approach` see below for different values.
 - `X-Request-ID`
+
 
 ## Get consent request
 
@@ -137,7 +156,7 @@ See Create consent.
 
 ### Path parameter
 
-- `CONSENT_ID`
+- `CONSENT_ID` - the id that was returned when the consent was created.
 
 ### Response
 
@@ -170,11 +189,15 @@ See Create consent.
         "consentStatus": "received"
     }
 
+This is the exact same body as the one sent in to the create consent request endpoint except that the current status is added.
+
 ### Response headers
 
 - `X-Request-ID`
 
-## Delete consent
+## Delete consent request
+
+A consent request can be deleted with a `DELETE` call.
 
     curl -X DELETE
 		[API_HOST]/psd2/consent/v1/consents/[CONSENT_ID]
@@ -183,11 +206,18 @@ See Create consent.
 		-H 'X-BicFi: [BICFI]'
 		-H 'X-Request-ID: [GUID]'
 
+### Status code
+
+`204 No content`
+
 ### Response headers
 
 - `X-Request-ID`
 
-## Consent status request
+
+## Get consent status request
+
+The consent request status is returned as part of the "get consent request" endpoint but it is also possible to use this endpoint to get only the status and nothing else. It is basaically the same call with `status` added at the end to the path.
 
     curl -X GET
 		[API_HOST]/psd2/consent/v1/consents/[CONSENT_ID]/status
@@ -210,7 +240,7 @@ See Create consent.
         "consentStatus": "received"
     }
 
-See possible values for status further down.
+See possible values for status [further down](#consent-status).
 
 ### Response headers
 
@@ -225,7 +255,7 @@ See possible values for status further down.
         -H 'X-BicFi: [BICFI]'
         -H 'X-Request-ID: [GUID]'
 
-Note that this call does not need a body.
+Note that this call does not need a body despite being a `POST`.
 
 ### Headers
 
@@ -437,3 +467,5 @@ Can be one of the following values. See the NextGen specs for more details.
 - CHIP_OTP
 - PHOTO_OTP
 - PUSH_OTP
+
+At this point the only type supported by banks are `PUSH_OTP` and how that works is covered by this tutorial. As we move into more markets and cover more different banks this will change and the documentation will be updated.
