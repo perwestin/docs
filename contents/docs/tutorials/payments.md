@@ -23,6 +23,8 @@ This documentation describes the payment flow.
 
 ## Acquire an access token for Payment Initiation
 
+Get a token to use for subsequent calls to the API. The scope should be set to `paymentinitiation`.
+
     curl -X POST
 		[AUTH_HOST]/connect/token
 		-H 'Content-Type: application/x-www-form-urlencoded'

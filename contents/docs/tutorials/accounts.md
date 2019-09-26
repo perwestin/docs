@@ -19,7 +19,7 @@ Available `API_HOST` values
 
 ## Acquire an access token for Account Information
 
-Get a token to use for subsequent calls to the API. The scope should be set to `accountinformation? .
+Get a token to use for subsequent calls to the API. The scope should be set to `accountinformation`.
 
     curl -X POST
 		[AUTH_HOST]/connect/token
