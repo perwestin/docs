@@ -6,6 +6,8 @@ prio: 3
 ---
 # Getting started with Payment Initiation Services (PIS)
 
+This API is used to get consent for and initiating payments. Note that the consent from the consent API is only used to access the account information API and that this API has its own consent procedure. (Very similar to the one in the consent API.)
+
 Available `AUTH_HOST` values
 - https://auth.sandbox.openbankingplatform.com
 - https://auth.openbankingplatform.com

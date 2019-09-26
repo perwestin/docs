@@ -6,6 +6,8 @@ prio: 2
 ---
 # Getting started with Account Information Services (AIS)
 
+This API is used to access information about accounts. Lists of accounts with an ASPSP and the actual transactions for one account. In order to be able to access this API first a consent needs to be acquired. See the [consent tutorial](/docs/tutorials/consent) for how that is done.
+
 Available `AUTH_HOST` values
 - https://auth.sandbox.openbankingplatform.com
 - https://auth.openbankingplatform.com
@@ -17,6 +19,8 @@ Available `API_HOST` values
 
 ## Acquire an access token for Account Information
 
+Get a token to use for subsequent calls to the API. The scope should be set to `accountinformation? .
+
     curl -X POST
 		[AUTH_HOST]/connect/token
 		-H 'Content-Type: application/x-www-form-urlencoded'
@@ -27,7 +31,8 @@ This post will return a JSON object that looks like this:
     {
         "access_token": "[ACCESS_TOKEN]",
         "expires_in": 3600,
-        "token_type": "Bearer"
+        "token_type": "Bearer",
+        "scope": "accountinformation"
     }
 
 ## Acquire a consent
