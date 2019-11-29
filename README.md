@@ -1,6 +1,6 @@
 # Open Payments documentation
 
-This is the source code for [openpayments.ioi/docs](https://openpayments.io/docs).
+This is the source code for [docs.openpayments.io](https://docs.openpayments.io).
 
 It is built with [gatsby.js](https://www.gatsbyjs.org/) based on the [Gatsbsy starter markdown](https://github.com/cvluca/gatsby-starter-markdown) repo.
 
