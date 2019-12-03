@@ -7,16 +7,28 @@ prio: 0
 
 # Supported banks
 
-Here is a list of currently supported banks in the sandbox environment. The sandbox is continuously being updated with more banks and new functionality in line with that the banks release their APIs. Please contact us to get more information about the current state. <em>(The banks supported has currently been limited due to unsufficient bank functionality, more banks will be enabled again as they becom available.)</em>
+The Open Payment Platform is integrated with banks providing an PSD2 API. The Platform is continuously being updated with more banks and new functionality. Please contact us to get more information about the current state.</em>
 
-## Sweden
+## Production
+
+Currently we support the following banks in our live environment.
+
+Sweden:
+- Nordea
+- Handelsbanken
+- SEB
+- Swedbank
+
+## Sandbox
+Sandbox shows banks that are both in production and sandbox, and banks that are currently in the integration phase and will go live soon.
+
+Sweden:
 
 - Nordea
 - Handelsbanken
 - SEB
 - Swedbank
 
-## Finland
-
-- Nordea
-- OP
+Finland: 
+- Nordea Finland
+- OP Financial Group
