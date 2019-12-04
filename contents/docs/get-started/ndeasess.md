@@ -63,6 +63,7 @@ Domestic	swedish-domestic-credit-transfer (Transfer)
 ## ACCOUNT INFORMATION SERVICE (AIS)
  The date parameters, from_date, and to_date have to be formatted correctly, namely yyyy-MM-dd, so for instance, 1989-02-22 would be in correct format.
   
+Retrieving transaction list can be made for 1 to 12 months from current date. 
 
 Avalible services| Support|
 |-----------------|--------------|
