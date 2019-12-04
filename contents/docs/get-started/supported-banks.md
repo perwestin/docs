@@ -17,17 +17,17 @@ Sweden:
 - [Nordea](docs.ndeasess.md)
 - [Handelsbanken](docs.handsess.md)
 - SEB
-- Swedbank
+- [Swedbank](docs.swedsess.md)
 
 ## Sandbox
 Sandbox shows banks that are both in production and sandbox, and banks that are currently in the integration phase and will go live soon.
 
 Sweden:
 
-- Nordea
-- Handelsbanken
+- [Nordea](docs.ndeasess.md)
+- [Handelsbanken](docs.handsess.md)
 - SEB
-- Swedbank
+- [Swedbank](docs.swedsess.md)
 
 Finland: 
 - Nordea Finland
