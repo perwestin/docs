@@ -14,8 +14,8 @@ The Open Payment Platform is integrated with banks providing an PSD2 API. The Pl
 Currently we support the following banks in our live environment.
 
 Sweden:
-- Nordea
-- Handelsbanken
+- [Nordea](docs.ndeasess.md)
+- [Handelsbanken](docs.handsess.md)
 - SEB
 - Swedbank
 
