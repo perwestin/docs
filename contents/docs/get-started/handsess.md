@@ -115,13 +115,26 @@ Available Consent Services| Support
 |Update PSU Data for consents PUT/v1/consents/{consentId}/authorizations/{authorizationId}|Handled by gateway, status is a combination of values in the gateway and the status BankID returns|
 
 ## SCA METHODS
-When authorizing a consent or payment the PSU must open the Mobilt BankID app with the authostarttoken within 30 seconds from the resource being created or it will fail. 
-The TPP must construct a link from the *data* property returned when SCA method has been selected that looks like this: *bankid:///?autostarttoken={AUTO_START_TOKEN}&redirect={ANY_REDIRECT_URI}*. The redirect query is mandatory for iOS and optional for Android. The TPP must then tell the PSU to open this link on its mobile or generate a QR code for it and ask the PSU to scan it with the Mobilt BankID app.
+When authorizing a consent or payment the PSU must open the Mobilt BankID app with the authostarttoken within 30 seconds from the resource being created, or it will fail. 
+
+The TPP must construct a link from the *data* property returned when SCA method has been selected that looks like this: 
+
+|Url|
+|-----|
+|*bankid:///?autostarttoken={AUTO_START_TOKEN}&redirect={ANY_REDIRECT_URI}*.|
+
+Then tell the PSU to open this on their mobile devise. 
+
+The redirect query is mandatory for iOS and optional for Android. The TPP must tell the PSU to open this link on its mobile or generate a QR code and ask the PSU to scan it with the Mobilt BankID app.
 
 Svenska Handelsbanken uses Mobilt BankID (mbid) with decoupled flow.
-Only SelectPsuAuthenticationMethod is supported for 
-*PUT/v1/consents/{consentId}/authorizations/{authorizationId}* and 
-*PUT/v1/{payment-service}/{paymentId}/authorizations/{authorizationId}*.
+
+Only SelectPsuAuthenticationMethod is supported 
+
+|Url|
+|-----|
+|*PUT/v1/consents/{consentId}/authorizations/{authorizationId}*|
+|*PUT/v1/{payment-service}/{paymentId}/authorizations/{authorizationId}*|
 
 
 
