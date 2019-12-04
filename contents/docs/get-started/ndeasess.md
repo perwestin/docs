@@ -88,4 +88,9 @@ Available Consent Services| Support
 
 ## SCA METHODS
 Nordea uses Mobilt BankID (mbid) with decoupled flow.
-Mobilt BankID with decoupled flow is implemented in both sandbox and production. An autostarttoken is returned but is not required to be used. It is enough to simply start the BankID application
+
+Mobilt BankID with decoupled flow is implemented in both sandbox and production. 
+
+An autostarttoken is returned but is not required to be used. 
+
+It is enough to simply start the BankID application
